@@ -1,0 +1,17 @@
+<div id="upload_types-page">
+	<div id="page-content" class="clearfix">
+		<h3>
+			Upload <%= @upload_type.name %>
+			<span class="pull-right">
+				<%= link_to "Upload New Job", new_job_path(:upload_job_id => @upload_type.id), :class=>"btn btn-primary" %>
+			</span>
+		</h3>
+
+		<div class="inner-box clearfix">
+		  <div id="form-block" class="grid_15">
+				<p class="lead"><%= @upload_type.description %></p>
+				<p><%= @upload_type.instructions.html_safe if @upload_type.instructions %></p>
+			</div>
+		</div>
+	</div>
+</div>

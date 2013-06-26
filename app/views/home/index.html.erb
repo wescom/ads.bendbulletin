@@ -1,0 +1,19 @@
+<div id="home-page">
+	<div id="page-content" class="clearfix">
+		<h1>Welcome to ads.bendbulletin.com</h1>
+
+		<div class="inner-box clearfix">
+		  <div id="form-block" class="grid_15">
+				<% @global_settings.each do |f| %>
+					<div class="indent"><%= f.welcome.html_safe if f.welcome %></div>
+					<br/>
+					<div class="well well-small controls controls-row">
+						<h4>General Instructions</h4>
+						<hr/>
+						<p><%= f.general_instructions.html_safe if f.general_instructions %></p>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

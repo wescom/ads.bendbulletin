@@ -1,0 +1,27 @@
+<h1>Job Files</h1>
+
+<table>
+	<thead>
+	  <tr>
+	    <th>File</th>
+	    <th></th>
+	    <th></th>
+	    <th>Actions</th>
+	  </tr>
+	<thead>
+
+	<% @job_files.each do |upload| %>
+	  <tr>
+	    <td><%= image_tag(upload.file(:thumb)) %></td>
+	    <td><%= link_to 'Edit', edit_job_file_path(upload) %></td>
+	    <td><%= button_to "Delete", job_file_path(upload), 
+						:method => :delete, 
+						:confirm => "Are you sure you want to delete file?",
+						:action => 'destroy' %></td>
+	  </tr>
+	<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Upload', new_job_file_path %>

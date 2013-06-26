@@ -1,0 +1,116 @@
+<div id="upload_types-page">
+	<div id="page-content" class="clearfix">
+		<h3>
+			Job #<%= @job.id %>
+			<span class="pull-right">
+				<%= link_to "All Jobs", jobs_path, :class=>"btn btn-primary" %>
+			</span>
+		</h3>
+
+		<div class="inner-box clearfix">
+		  <div id="form-block" class="grid_15">
+				<%= form_for @job do |form| %>
+					<fieldset>
+						<div class="well well-small controls controls-row">
+							<div class="span3">
+								<h5>Contact Info:</h5>
+								Name: <%= @job.name %><br/>
+								<% if @job.company.nil? %>Company: <%= @job.company %><br/><% end %>
+								<% if @job.salesrep.nil? %>Sales Rep: <%= @job.salesrep %><br/><% end %>
+								<% if @job.acct_no.nil? %>Account #: <%= @job.acct_no %><br/><% end %>
+							</div>
+							<div class="span3">
+								<h5>Address:</h5>
+								<%= @job.address1 %><br/>
+								<% if @job.address2.nil? %><%= @job.address2 %><br/><% end %>
+								<%= @job.city %>, <%= @job.state %> <%= @job.zip %><br/>
+							</div>
+							<div class="span3">
+								<h5>Contact Info:</h5>
+								Email: <%= @job.email %><br/>
+								Phone Numbers: 
+								<%= @job.phonenum %>
+								<% if @job.phonenum2.nil? %>, <%= @job.phonenum2 %><% end %><br/>
+								Fax #: <%= @job.fax %><br/>
+							</div>
+						</div>
+
+						Job Info:
+						<div class="well well-small">
+							<% if @job.upload_type.get_startdate %>
+								StartDate: <%= @job.startdate.strftime('%m/%d/%Y') %><br/>
+							<% end %>
+
+							<% if @job.upload_type.get_application_used %>
+								Application: 
+								<% if @job.application.present? %>
+									<%= @job.application %>
+								<% else %>
+									<%= @job.application_other %>
+								<% end %>
+								<%= @job.application_version %><br/>
+							<% end %>
+							
+							<% if @job.upload_type.get_platform %>
+						    Platform: <%= @job.platform %><br/>
+							<% end %>
+
+							<% if @job.upload_type.get_image_format %>
+								Image Formats Used: <%= @job.image_format %><br/> 
+							<% end %>
+
+							<% if @job.upload_type.get_vector_format %>
+								Vectored Formats Used: <%= @job.vector_format %><br/>
+							<% end %>
+
+							<% if @job.upload_type.get_color_spec %>
+								Color Spec: <%= @job.color_spec %></br>
+							<% end %>
+
+							<% if @job.upload_type.get_job_type %>
+								Job Type:
+								<% if @job.job_type %>
+						    	Coupon
+								<% else %>
+						    	Heavy Reverse
+								<% end %>	
+								<br/>
+							<% end %>
+
+							<% if @job.upload_type.get_trapping %>
+								Trappings? 
+								<% if @job.trapping %>
+						    	Yes
+								<% else %>
+						    	No
+								<% end %>	
+								<br/>
+							<% end %>
+
+							<% if @job.upload_type.get_files_to_run %>
+								Files to Run: <%= @job.files_to_run %>
+							<% end %><br/>
+						</div>
+
+						Files Upload with Job:
+						<div class="well well-small clearfix">
+							<% @job.job_files.each do |file| %>
+								<ul class="unstyled pull-left">
+									<li class="attached_file_box text-center">
+										<%= link_to image_tag(file.file.url(:thumb), :alt=>"File"), file.file.url %><br/>
+										<%= file.file_file_name %>
+									</li>
+								</ul>
+							<% end %>
+						</div>
+
+						Instructions: 
+						<div class="well well-small">
+							<%= @job.instructions %>
+						</div>
+
+					</fieldset>
+				<% end %>
+		</div>
+	</div>
+</div>

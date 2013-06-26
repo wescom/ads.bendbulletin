@@ -1,0 +1,12 @@
+<% if user_signed_in? %>
+	<div class="navbar">
+		<div class="navbar-inner">
+		  <ul class="nav">
+		    <li><%= link_to "Home", root_url %></li>
+				<% get_menu_tabs().each do |f| %>
+			    <li><%= link_to f.name, upload_type_path(f) %></li>
+				<% end %>
+		  </ul>
+		</div>
+	</div>
+<% end %>

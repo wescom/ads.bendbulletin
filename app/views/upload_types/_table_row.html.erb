@@ -1,0 +1,13 @@
+<tr>
+	<td><%= table_row.name %></td>	
+	<td><%= table_row.tab_name %></td>	
+	<td class="center">
+		<div class="text-center">
+	  	<%= link_to("Edit", edit_upload_type_path(table_row), :class => 'btn btn-mini') %>
+	  	<%= link_to("Delete Type", upload_type_path(table_row), 
+									:data => { :confirm => "Are you sure you want to delete this upload type?" }, 
+									:method => :delete, 
+									:class => 'btn btn-mini') %>
+		</div>
+	</td>
+</tr>

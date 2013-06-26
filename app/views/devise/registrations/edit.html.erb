@@ -1,0 +1,20 @@
+<h3>
+	Edit Password: <%= current_user.name %>
+	<span class="pull-right">
+		<%= link_to "Back to Account", edit_user_path(current_user), :class=>"btn btn-primary" %>
+	</span>
+</h3>
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-vertical' }) do |f| %>
+  <%= f.error_notification %>
+  <%= display_base_errors resource %>
+  <%= f.input :password, :autocomplete => "off", :required => false %>
+  <%= f.input :password_confirmation, :required => false %>
+  <%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
+  <%= f.button :submit, 'Update', :class => 'btn-primary' %>
+<% end %>
+
+<!--
+<h3>Cancel my account</h3>
+<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
+<%= link_to "Back", :back %>
+-->

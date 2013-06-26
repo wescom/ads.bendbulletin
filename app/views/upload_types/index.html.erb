@@ -1,0 +1,31 @@
+<div id="upload_types-page">
+	<div id="page-content" class="clearfix">
+		<h3>
+			Upload Types
+			<span class="pull-right">
+				<%= link_to "New", new_upload_type_path, :class=>"btn btn-primary" %>
+			</span>
+		</h3>
+
+		<div class="inner-box clearfix">
+		  <div id="form-block" class="grid_15">
+			  <% if @upload_types %>
+			    <div id="table-block" class="grid_15">
+			      <% unless @upload_types.nil? %>
+		        <table class="table table-bordered table-hover table-condensed">
+		          <tbody>
+		            <thead>
+		              <td>Name</td>
+		              <td>Tab Name</td>
+		              <td class="text-center">Action</td>
+		            </thead>
+		            <%= render :partial => 'table_row', :collection => @upload_types %>
+			          </tbody>
+			        </table>
+			      <% end %>
+			    </div>
+			  <% end %>
+			</div>
+		</div>
+	</div>
+</div>

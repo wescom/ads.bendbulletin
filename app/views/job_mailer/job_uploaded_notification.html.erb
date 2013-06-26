@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Files have been uploaded to ads.bendbulletin.com</h1>
+    <p>
+      <%= @job.name %> has recently uploaded files to be processed. Please go to <%= @url %> to retrieve the files.
+    </p>
+    <p>
+			<h3>Contact Info</h3>
+			&nbsp;&nbsp;<strong>Name: </strong><%= @job.name %><br/>
+			&nbsp;&nbsp;<% if @job.company %><strong>Company: </strong><%= @job.company %><br/><% end %>
+			&nbsp;&nbsp;<% if @job.email %><strong>Email: </strong><%= @job.email %><br/><% end %>
+			&nbsp;&nbsp;<% if @job.phonenum %><strong>Phone: </strong><%= @job.phonenum %><br/><% end %>
+			&nbsp;&nbsp;<% if @job.phonenum2 %><strong>Phone2: </strong><%= @job.phonenum2 %><br/><% end %>
+    </p>
+
+		<fieldset>
+			<h3>Job Info:</h3>
+			&nbsp;&nbsp;<strong>Job Type: </strong><%= @upload_type.name %><br/>
+			&nbsp;&nbsp;<strong>StartDate: </strong><%= @job.startdate %><br/>
+			&nbsp;&nbsp;<strong>Files Uploaded with Job:</strong><br/>
+			<div class="indent">
+				<% @job.job_files.each do |file| %>
+					&nbsp;&nbsp;&nbsp;&nbsp;<%= file.file_file_name %><br/>
+				<% end %>
+			</div>
+			&nbsp;&nbsp;<strong>Instructions: </strong><%= @job.instructions %><br/>
+		</fieldset>
+  </body>
+</html>

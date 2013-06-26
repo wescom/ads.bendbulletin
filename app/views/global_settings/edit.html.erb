@@ -1,0 +1,51 @@
+<div id="settings-page">
+  <div id="page-content" class="clearfix">
+		<h1>Global Settings</h1>
+
+		<div class="inner-box clearfix">
+		  <div id="form-block" class="full_width clearfix">
+				<div id="settings_block">
+					<%= form_for @settings do |form| %>
+						<div id="settings_inner_block">
+							<div class="setting_header"></div>
+							<div class="setting_body form-horizontal">
+							  <div class="control-group">
+							    <label class="control-label" for="welcome">Welcome Message:</label>
+							    <div class="controls">
+										<%= form.text_area :welcome, :style=>"width:80%;height:100px",
+													:placeholder=>"Enter welcome message here..." %>
+							    </div>
+							  </div>
+							  <div class="control-group">
+							    <label class="control-label" for="contact_email">Default Contact:</label>
+							    <div class="controls">
+										<%= form.text_field :contact_email, :type=>"email", :style=>"width:30%;", 
+													:placeholder=>"Enter general contact email here..." %>
+							    </div>
+							  </div>
+							  <div class="control-group">
+							    <label class="control-label" for="general_instructions">General Instructions:</label>
+							    <div class="controls">
+										<%= form.text_area :general_instructions, :style=>"width:80%;height:400px",
+													:placeholder=>"Enter general upload instructions here..." %>
+							    </div>
+							  </div>
+							  <div class="control-group">
+							    <label class="control-label" for="disclaimer">Disclaimer Text:</label>
+							    <div class="controls">
+										<%= form.text_area :disclaimer, :style=>"width:80%;height:200px", :rows => 5,
+													:placeholder=>"Enter Disclaimer text all users need to agree to here.." %>
+							    </div>
+							  </div>
+							</div>
+							<div>
+								<%= form.submit "Update", :class => 'btn btn-primary'%>
+								<%= form.submit "Cancel", :name => 'cancel_button', :class => 'btn btn-primary'%>
+							</div>
+						</div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

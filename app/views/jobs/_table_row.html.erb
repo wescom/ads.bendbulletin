@@ -1,0 +1,25 @@
+<tr>
+	<td><div class="text-center"><%= table_row.id %></div></td>
+	<td><div class="text-center"><%= table_row.upload_type.name %></div></td>
+	<td><%= table_row.name %></td>
+	<td><%= table_row.company %></td>
+	<td><div class="text-center"><%= table_row.created_at.strftime('%m/%d/%Y') %> at <%= table_row.created_at.strftime('%I:%M%p') %></div></td>
+	<td>
+		<div class="text-center">
+			<ul class="inline">
+				<li>
+					<%= link_to "Show", job_path(table_row), :class => 'btn btn-mini' %>
+				</li>
+				<% if current_user.has_role? :admin %>
+					<li>
+						<%= link_to "Delete", job_path(table_row), 
+									:method => :delete, 
+									:confirm => "Are you sure you want to delete job?",
+									:action => 'destroy',
+									:class => 'btn btn-mini' %>
+					</li>
+				<% end %>
+			</ul>
+		</div>
+	</td>
+</tr>

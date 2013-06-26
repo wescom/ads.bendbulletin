@@ -1,0 +1,51 @@
+<h3>Users</h3>
+<div>
+	<table class="table table-condensed table-striped table-bordered table-hover">
+	  <thead>
+	    <tr>
+	      <th><div class="text-center">Username</div></th>
+	      <th><div class="text-center">Email</div></th>
+	      <th><div class="text-center">Registered</div></th>
+	      <th><div class="text-center">Role</div></th>
+	      <th><div class="text-center">Account</div></th>
+	      <th><div class="text-center">Jobs</div></th>
+	    </tr>
+	  </thead>
+	  <tbody>
+		  <% @users.each do |user| %>
+		    <tr>
+		      <td><%= link_to user.name, user %></td>
+		      <td><%= user.email %></td>
+		      <td>
+						<div class="text-center">
+							<%= user.created_at.strftime('%m/%d/%Y') %> at <%= user.created_at.strftime('%I:%M%p') %>
+						</div>
+					</td>
+		      <td>
+						<div class="text-center">
+							<%= user.roles.last.name.titleize unless user.roles.last.nil? %>
+							<a data-toggle="modal" href="#role-options-<%= user.id %>" class="btn btn-mini" type="button">Change role</a>
+							<%= render user %>
+						</div>
+					</td>
+		      <td>
+						<div class="text-center">
+							<%= link_to("Edit", edit_user_path(user), :class => 'btn btn-mini') %>
+							<%= link_to("Delete user", user_path(user), 
+													:data => { :confirm => "Are you sure?" }, 
+													:method => :delete, 
+													:class => 'btn btn-mini') if (user != current_user) and (current_user.has_role? :admin) %>
+						</div>
+					</td>
+					<td>
+						<div class="text-center">
+							<% if user.jobs.present? %>
+								<%= link_to("List Jobs", jobs_path(:user_id => user), :class => 'btn btn-mini') %>
+							<% end %>
+						</div>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

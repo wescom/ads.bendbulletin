@@ -1,0 +1,41 @@
+<div id="jobs-page">
+	<div id="page-content" class="clearfix">
+		<h1>
+			<% if params[:user_id] %>
+				Jobs for <%= @jobs.first.user.name %>
+			<% else %>
+				All Jobs
+			<% end %>
+		</h1>
+		<span class="pull-right"></span>
+
+		<div class="inner-box clearfix">
+		  <div id="form-block" class="grid_15">
+			  <% if @jobs %>
+			    <div id="table-block" class="grid_15">
+			      <% unless @jobs.nil? %>
+			        <table class="table table-bordered table-hover table-condensed">
+			          <tbody>
+			            <thead>
+										<tr>
+				              <th><div class="text-center">Job #</div></th>
+				              <th><div class="text-center">Upload Type</div></th>
+				              <th><div>Name</div></th>
+				              <th><div>Company<div></th>
+				              <th><div class="text-center"</div>Uploaded</div></th>
+				              <th><div class="text-center">Action</div></th>
+										</tr>
+			            </thead>
+			            <%= render :partial => 'table_row', :collection => @jobs %>
+			          </tbody>
+				      </table>
+							<div id="table-paginate">
+				      	<div class="pull-right"><%= will_paginate @jobs, :class => "pagination-small" %></div>
+							</div>
+			      <% end %>
+			    </div>
+			  <% end %>
+			</div>
+		</div>
+	</div>
+</div>

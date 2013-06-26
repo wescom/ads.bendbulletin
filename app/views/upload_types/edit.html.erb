@@ -1,0 +1,48 @@
+<div id="upload_types-page">
+	<div id="page-content" class="clearfix">
+		<h3>Upload Type: <%= @upload_type.name %></h3>
+
+		<div class="inner-box clearfix">
+		  <div id="form-block" class="grid_15">
+				<%= form_for @upload_type, :url => upload_type_path do |form| %>
+					<fieldset>
+						<label>Name:</label>
+						<%= form.text_field :name, :class => "large", :placeholder=>"Enter name of upload type" %>
+						<%= error_messages(@upload_type, "name") %>
+
+						<label>Tab Name:</label>
+						<%= form.text_field :tab_name, :class => "large", :placeholder=>"Enter name for menu tab" %>
+						<%= error_messages(@upload_type, "tab_name") %>
+
+						<label>Description:</label>
+						<%= form.text_area :description, :style=>"width:80%;height:100px", :placeholder=>"Enter description" %>
+									
+						<label>Instructions:</label>
+						<%= form.text_area :instructions, :style=>"width:80%;height:400px", :placeholder=>"Enter instructions for user" %>
+
+						<ul class="unstyled">
+						Upload Prompts to include:
+							<li><label class="checkbox"><%= form.check_box :get_startdate %>StartDate</label></li>
+							<li><label class="checkbox"><%= form.check_box :get_application_used %>Application Used (ie. InDesign, PhotoShop,...)</label></li>
+							<li><label class="checkbox"><%= form.check_box :get_platform %>Platform (ie. Mac/Windows)</label></li>
+							<li><label class="checkbox"><%= form.check_box :get_image_format %>Image Format (ie. TIFF, JPG,...)</label></li>
+							<li><label class="checkbox"><%= form.check_box :get_vector_format %>Vector Format (ie. EPS, AI,...)</label></li>
+							<li><label class="checkbox"><%= form.check_box :get_color_spec %>Color Spec (BW or Color)</label></li>
+							<li><label class="checkbox"><%= form.check_box :get_job_type %>Job Types (ie. Coupon, Reverse,...)</label></li>
+							<li><label class="checkbox"><%= form.check_box :get_trapping %>Trapping Applied?</label></li>
+							<li><label class="checkbox"><%= form.check_box :get_files_to_run %>List of Files to Run</label></li>
+						</ul>
+						
+						<label>Email Recipient (whom to email when job is created):</label>
+						<%= form.text_field :email_recipient, :class => "large", :placeholder=>"email" %>
+						<%= error_messages(@upload_type, "email_recipient") %>
+						
+						<br/>
+						<%= form.submit "Update", :class => 'btn btn-primary'%>
+						<%= form.submit "Cancel", :name => 'cancel_button', :class => 'btn btn-primary'%>
+					</fieldset>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

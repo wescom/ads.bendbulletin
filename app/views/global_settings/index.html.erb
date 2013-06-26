@@ -1,0 +1,73 @@
+<div id="settings-page">
+  <div id="page-content" class="clearfix">
+
+		<div class="inner-box clearfix">
+		  <div id="form-block" class="full_width clearfix">
+				<div id="settings_block">
+					<h3>
+						Upload Types
+						<span class="pull-right">
+							<%= link_to "New Upload Type", new_upload_type_path, :class=>"btn btn-primary" %>
+						</span>
+					</h3>
+					<div class="setting_header">
+					</div>
+					<div class="setting_body">
+			      <% unless @upload_types.nil? %>
+			        <table class="table table-bordered table-hover table-condensed">
+			          <tbody>
+			            <thead>
+			              <th><div class="text-center">Name</div></td>
+			              <th><div class="text-center">Tab Name</div></td>
+			              <th><div class="text-center">Action</div></td>
+			            </thead>
+									<%= render :partial => 'upload_types/table_row', :collection => @upload_types %>
+			          </tbody>
+			        </table>
+			      <% end %>
+					</div>
+				</div>
+				<br/>
+
+				<div id="settings_block">
+					<% @settings.each do |form| %>
+						<h3>
+							Global Settings
+							<span class="pull-right">
+								<%= link_to "Edit Global Settings", edit_global_setting_path(form), :class=>"btn btn-primary" %>
+							</span>
+						</h3><hr/>
+						<div id="settings_inner_block">
+							<div class="setting_body">
+								<dl>
+									<dt>Welcome Text: </dt>
+									<div class="well well-small controls controls-row">
+										<dd><%= form.welcome.html_safe if form.welcome %></dd>
+									</div>
+								</dl>
+								<dl>
+									<dt>General Contact Email Address: </dt>
+									<div class="well well-small controls controls-row">
+										<dd><%= form.contact_email %></dd>
+									</div>
+								</dl>
+								<dl>
+									<dt>General Instructions: </dt>
+									<div class="well well-small controls controls-row">
+										<dd><%= form.general_instructions.html_safe if form.general_instructions %></dd>
+									</div>
+								</dl>
+								<dl>
+									<dt>Disclaimer Text: </dt>
+									<div class="well well-small controls controls-row">
+										<dd><%= form.disclaimer %></dd>
+									</div>
+								</dl>
+							</div>
+						</div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

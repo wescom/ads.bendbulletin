@@ -1,0 +1,181 @@
+<div id="jobs-page">
+	<div id="page-content" class="clearfix">
+		<h1>Upload New Job</h1>
+
+		<div class="inner-box clearfix">
+		  <div id="form-block" class="grid_15">
+				<%= form_for @job, :url => jobs_path, :html => {:multipart => true} do |form| %>
+					<p>Fill out the form below, browse for the file to upload, and press the submit button. If your file is large, be patient and wait for the successful upload screen. Your job and associated file will be assigned a job number and we will contact you as soon as possible in reference to your project.</p>
+					<p>Required fields are marked with an asterisk *.</p>
+
+					<%= form.hidden_field :upload_type_id, :value => @upload_type.id %>
+
+					<fieldset>
+						<div class="well well-small controls controls-row">
+							<div class="span3">
+								<label>Name:</label><%= form.text_field :name, :class => "large", :autofocus => true,
+										:value=>current_user.name %>
+								<%= error_messages(@job, "name") %>
+							</div>
+							<div class="span3">
+								<label>Company:</label><%= form.text_field :company, :value=>current_user.company %>
+								<label>Account #:</label><%= form.text_field :acct_no, :value=>current_user.acct_no %>
+								<label>Sales Rep:</label><%= form.text_field :salesrep %>
+							</div>
+							<div class="span3">
+								<label>Email:</label><%= form.text_field :email, :required => true, :value=>current_user.email %>
+							</div>
+							<div class="span2">
+								<label>Phone Numbers:</label><%= form.text_field :phonenum, :value=>current_user.phonenum %>
+								<%= error_messages(@job, "phonenum") %>
+								<%= form.text_field :phonenum2, :value=>current_user.phonenum2 %>
+								<label>Fax #:</label><%= form.text_field :fax, :value=>current_user.fax %>
+							</div>
+						</div>
+
+						<div class="well well-small">
+							<div class="form-horizontal">
+								<div class="control-group">
+										<label class="control-label" for="address1">Street Address:</label>
+										<div class="controls"><%= form.text_field :address1, :value=>current_user.address1 %></div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="address2">Address2 or PO:</label>
+									<div class="controls"><%= form.text_field :address2, :value=>current_user.address2 %></div>
+							  </div>				
+								<div class="control-group">
+									<label class="control-label" for="city">City/State/Zip:</label>
+									<div class="controls">
+										<%= form.text_field :city, :value=>current_user.city, :size => 20, :maxlength => 20, :class=>"input-medium" %>
+										<%= form.text_field :state, :value=>current_user.state, :size => 2, :maxlength => 2, :class=>"input-mini" %>
+										<%= form.text_field :zip, :value=>current_user.zip, :size => 5, :maxlength => 5, :class=>"input-mini" %>
+									</div>
+							  </div>
+							</div>
+						</div>
+
+						Job Info:
+						<div class="well well-small">
+							<% if @upload_type.get_startdate %>
+								StartDate: <%= form.date_select(:startdate, {
+																			:include_blank => true,
+																			:start_year => Time.now.year,
+																			:end_year => Time.now.year+1,
+																			:use_month_numbers => true,  
+																			:order => [:month, :day, :year]},
+																		{:class => "input-small"}) %>
+							<% end %><br/>
+
+							<% if @upload_type.get_application_used %>
+								Application: Indicate which program the job was created in:<br/>
+								<%= form.select :application, 
+																options_for_select(['InDesign', 'Adobe PDF', 'Quark', 'PageMaker', 
+																										'Illustrator', 'Photoshop', 'Freehand', 'Other']), 
+																:prompt=>'- Select Application -' %>
+								If other, indicate: <%= form.text_field :application_other, :class => "input-medium" %>
+								Version: <%= form.text_field :application_version, :class => "input-small" %>
+							<% end %><br/>
+							
+							<% if @upload_type.get_platform %>
+								<label class="radio inline">
+							    <%= form.label :platform, "Platform:" %>
+							  </label>
+								<label class="radio inline">
+							    <%= form.radio_button :platform, "Mac", :checked => true %> Mac
+							  </label>
+								<label class="radio inline">
+							    <%= form.radio_button :platform, "Windows" %> Windows
+							  </label>
+							<% end %><br/>
+
+							<% if @upload_type.get_image_format %>
+								Image Formats Used: 
+								<label class="checkbox inline"><%= form.check_box :image_format %>TIFF</label>
+								<label class="checkbox inline"><%= form.check_box :image_format %>JPG</label>
+								<label class="checkbox inline"><%= form.check_box :image_format %>EPS</label>
+							<% end %><br/>
+
+							<% if @upload_type.get_vector_format %>
+								Vectored Formats Used: 
+								<label class="checkbox inline"><%= form.check_box :vector_format %>EPS</label>
+								<label class="checkbox inline"><%= form.check_box :vector_format %>AI</label>
+								<label class="checkbox inline"><%= form.check_box :vector_format %>FH</label>
+							<% end %><br/>
+
+							<% if @upload_type.get_color_spec %>
+								<label class="radio inline">
+							    <%= form.label :color_spec, "Color Spec:" %>
+							  </label>
+								<label class="radio inline">
+							    <%= form.radio_button :color_spec, "B/W", :checked => true %> B/W
+							  </label>
+								<label class="radio inline">
+							    <%= form.radio_button :color_spec, "Color" %> Color
+							  </label>
+							<% end %><br/>
+
+							<% if @upload_type.get_job_type %>
+								<label class="radio inline">
+							    <%= form.radio_button :job_type, "Coupon" %> Coupon
+							  </label>
+								<label class="radio inline">
+							    <%= form.radio_button :job_type, "Heavy Reverse" %> Heavy Reverse
+							  </label>
+							<% end %><br/>
+
+							<% if @upload_type.get_trapping %>
+								<label class="radio inline">
+							    <%= form.label :color_spec, "Trapping: Have you applied Traps? " %>
+							  </label>
+								<label class="radio inline">
+							    <%= form.radio_button :trapping, "Yes" %> Yes
+							  </label>
+								<label class="radio inline">
+							    <%= form.radio_button :trapping, "No", :checked => true %> No
+							  </label>
+							<% end %><br/>
+
+							<% if @upload_type.get_files_to_run %>
+								Files to Run: <%= form.text_field :files_to_run %>
+								<span class="help-inline">Comma-separated list of files to run</span>
+							<% end %><br/>
+						</div>
+
+						Files to Upload:
+						<div class="well well-small clearfix">
+							<p>Browse your system and locate the file(s) to upload for this job. Be sure your files are compressed into a single archive as in the General Instructions, and you have successfully printed your job to a postscript printer.</p>
+
+							<ul class="inline">
+								<li>
+									<%= render :partial => 'new_file', :locals => {:form => form} %>
+								</li>
+								<li>
+								</li>
+								<li>
+									<%= render :partial => 'new_file', :locals => {:form => form} %>
+								</li>
+							</ul>
+						</div>
+
+						<label>Instructions:</label><%= form.text_area :instructions, :style=>"width:80%;height:100px",
+									:placeholder=>"Enter any special instructions for this job" %>
+
+					<label class="checkbox">
+				    <%= form.check_box :disclaimer %>
+						<% @global_settings.each do |setting| %>
+							<p><%= setting.disclaimer.html_safe if setting.disclaimer %></p>
+						<% end %>
+						<%= error_messages(@job, "disclaimer") %>
+				  </label>
+
+						<br/>
+						<%= form.submit "Create", :class => 'submit small'%>
+						<%= form.submit "Cancel", :name => 'cancel_button', :class => 'submit small'%>
+					</fieldset>
+					
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+

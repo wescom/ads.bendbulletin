@@ -1,0 +1,62 @@
+<div id="upload_types-page">
+	<div id="page-content" class="clearfix">
+		<h3>
+			Login: <%= @user.email %>
+			<span class="pull-right">
+				<%= link_to "All Users", users_path, :class=>"btn btn-primary" if (current_user.has_role? :admin) %>
+			</span>
+		</h3>
+
+		<div class="inner-box clearfix">
+		  <div id="form-block" class="grid_15">
+				<%= form_for @user, :url => user_path do |form| %>
+					<fieldset>
+						<% if (current_user == @user) %>
+							<div class="well well-small controls controls-row">
+							  <%= link_to "Change Password", edit_user_registration_path, :class=>"btn btn-mini" %>
+							</div>
+						<% end %>
+
+						<div class="well well-small controls controls-row">
+							<div class="span3">
+							  <label>Name:</label><%= form.text_field :name %>
+								<%= error_messages(@user, "name") %>
+								<label>Company:</label><%= form.text_field :company %>
+								<label>Account #:</label><%= form.text_field :acct_no %>
+							</div>
+							<div class="span2">
+								<label>Phone Numbers:</label><%= form.text_field :phonenum, :size => 12, :maxlength => 12, :class=>"input-medium" %>
+								<%= form.text_field :phonenum2, :size => 12, :maxlength => 12, :class=>"input-medium" %>
+								<label>Fax #:</label><%= form.text_field :fax, :size => 12, :maxlength => 12, :class=>"input-medium" %>
+							</div>
+							<div class="span6">
+								<div class="form-horizontal">
+									<div class="control-group">
+											<label class="control-label" for="address1">Street Address:</label>
+											<div class="controls"><%= form.text_field :address1 %></div>
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="address2">Address2 or PO:</label>
+										<div class="controls"><%= form.text_field :address2 %></div>
+								  </div>				
+									<div class="control-group">
+										<label class="control-label" for="city">City/State/Zip:</label>
+										<div class="controls">
+											<%= form.text_field :city, :size => 20, :maxlength => 20, :class=>"input-medium" %>
+											<%= form.text_field :state, :size => 2, :maxlength => 2, :class=>"input-mini" %>
+											<%= form.text_field :zip, :size => 5, :maxlength => 5, :class=>"input-mini" %>
+										</div>
+								  </div>
+								</div>
+							</div>
+						</div>
+						<br/>
+						<%= form.submit "Update", :class => 'submit small'%>
+						<%= form.submit "Cancel", :name => 'cancel_button', :class => 'submit small'%>
+					</fieldset>
+				<% end %>
+			</div>
+	  </div>
+	</div>
+</div>
+
