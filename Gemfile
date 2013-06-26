@@ -8,6 +8,7 @@ group :assets do
 end
 gem 'jquery-rails'
 gem "unicorn", ">= 4.3.1", :group => :production
+gem 'capistrano'
 gem "rspec-rails", ">= 2.12.2", :group => [:development, :test]
 gem "database_cleaner", ">= 0.9.1", :group => :test
 gem "email_spec", ">= 1.4.0", :group => :test
