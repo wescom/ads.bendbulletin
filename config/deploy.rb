@@ -1,5 +1,6 @@
 set :application, "ads.bendbulletin.com"
 set :repository,  "git@github.com:wescom/ads.bendbulletin.git"
+default_run_options[:pty] = true
 
 role :web, "172.16.128.125"                       # Your HTTP server, Apache/etc
 role :app, "172.16.128.125"                       # This may be the same as your `Web` server
