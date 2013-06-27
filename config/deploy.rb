@@ -8,6 +8,9 @@ role :db,  "172.16.128.125", :primary => true     # This is where Rails migratio
 
 set :ssh_options, { :forward_agent => true }
 
+# Needed to have coaistrano run bundle install on deploy
+require 'bundler/capistrano'
+
 # if you want to clean up old releases on each deploy uncomment this:
 # after "deploy:restart", "deploy:cleanup"
 
