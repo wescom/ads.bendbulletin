@@ -6,6 +6,8 @@ role :web, "172.16.128.125"                       # Your HTTP server, Apache/etc
 role :app, "172.16.128.125"                       # This may be the same as your `Web` server
 role :db,  "172.16.128.125", :primary => true     # This is where Rails migrations will run
 
+set :ssh_options, { :forward_agent => true }
+
 # if you want to clean up old releases on each deploy uncomment this:
 # after "deploy:restart", "deploy:cleanup"
 
