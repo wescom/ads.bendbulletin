@@ -39,7 +39,7 @@ production:
   pool: 5
   username: ads
   password: nVWflydqB2ZVgzGHbiaj
-  socket: /tmp/mysql.sock
+  socket: /run/mysqld/mysqld.sock
 
 cucumber:
   <<: *test
