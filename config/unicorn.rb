@@ -3,7 +3,7 @@
 # ------------------------------------------------------------------------------
 
 # Set your full path to application.
-app_path = "#{latest_release}"
+app_path = "/u/apps/ads.bendbulletin.com/current"
 
 # Set unicorn options
 worker_processes 1
