@@ -29,6 +29,10 @@ gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri
 gem 'paperclip'
 gem 'will_paginate'
 
+group :development do
+  gem 'capistrano-unicorn', :require => false
+end
+
 group :production do
   gem "therubyracer"
 end
