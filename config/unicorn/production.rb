@@ -12,7 +12,7 @@ timeout 180
 listen "127.0.0.1:9011"
 
 # Spawn unicorn master worker for user ads (group: ads)
-#user 'deployer', 'ads' 
+user 'deployer', 'ads' 
 
 # Fill path to your app
 working_directory app_path
