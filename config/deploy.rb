@@ -15,9 +15,9 @@ set :bundle_flags, ''
 # set :deploy_to, '/home/myuser/myapp_deployed'
 # set :deploy_via, :copy
 
-role :web, "172.16.128.125"                       # Your HTTP server, Apache/etc
-role :app, "172.16.128.125"                       # This may be the same as your `Web` server
-role :db,  "172.16.128.125", :primary => true     # This is where Rails migrations will run
+role :web, "ads2.wescompapers.com"                       # Your HTTP server, Apache/etc
+role :app, "ads2.wescompapers.com"                       # This may be the same as your `Web` server
+role :db,  "ads2.wescompapers.com", :primary => true     # This is where Rails migrations will run
 
 # if you want to clean up old releases on each deploy uncomment this:
 after 'deploy:restart', 'deploy:cleanup'
