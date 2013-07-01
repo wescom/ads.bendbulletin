@@ -13,6 +13,7 @@ listen "ads2.bendbulletin.com:9011"
 
 # Spawn unicorn master worker for user deployer (group: ads)
 #user 'deployer', 'ads' 
+shared_path = "#{app_path}/shared"
 
 # Fill path to your app
 working_directory app_path
