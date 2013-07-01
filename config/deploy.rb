@@ -10,10 +10,9 @@ default_run_options[:pty] = true
 set :repository,  "git@github.com:wescom/ads.bendbulletin.git"
 set :ssh_options, { :forward_agent => true }
 set :bundle_flags, ''
-
-# Destination of deployments
-# set :deploy_to, '/home/myuser/myapp_deployed'
-# set :deploy_via, :copy
+``
+set :user,      "deployer"  # The server's user for deploys
+set :group,     "ads"
 
 role :web, "ads2.bendbulletin.com"                       # Your HTTP server, Apache/etc
 role :app, "ads2.bendbulletin.com"                       # This may be the same as your `Web` server
