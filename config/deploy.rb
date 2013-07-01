@@ -10,7 +10,7 @@ default_run_options[:pty] = true
 set :repository,  "git@github.com:wescom/ads.bendbulletin.git"
 set :ssh_options, { :forward_agent => true }
 set :bundle_flags, ''
-``
+
 set :user,      "deployer"  # The server's user for deploys
 set :group,     "ads"
 
