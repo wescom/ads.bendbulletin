@@ -16,7 +16,7 @@ class JobsController < ApplicationController
     @upload_type = UploadType.find_by_id(params[:upload_job_id])
     @job = Job.new
     @job.startdate = Time.now
-    5.times {@job.job_files.build}
+    10.times {@job.job_files.build}
     @global_settings = GlobalSettings.all
   end
 
@@ -33,6 +33,8 @@ class JobsController < ApplicationController
         flash[:notice] = "Job Created"
         redirect_to root_path
       else
+        # retain selected files if save fails
+        (10 - @job.job_files.size).times { @job.job_files.build }
         flash[:error] = "Job Creation Failed"
         render :action => :new
       end

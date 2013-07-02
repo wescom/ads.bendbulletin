@@ -1,5 +1,5 @@
 <%= form.fields_for :job_files, :html=>{ :multipart => true } do |f| %>
-	<div>
+	<li class="files_to_upload">
 		<%= f.file_field :file %>
-	</div>
+	</li>
 <% end %>
