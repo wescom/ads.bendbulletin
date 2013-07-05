@@ -14,3 +14,10 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
+
+$(document).ready(function(){
+	$('.progress_bar').click(function() {
+		$('#ProgressModal').modal('show')
+	});
+});
+
