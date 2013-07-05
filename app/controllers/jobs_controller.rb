@@ -1,7 +1,7 @@
 class JobsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :require_admin, :only => [:index, :show, :edit, :update, :destroy]
-  before_filter :require_edit, :only => [:index, :show]
+  before_filter :require_admin, :only => [:edit, :update, :destroy]
+  before_filter :require_edit_or_admin, :only => [:index, :show]
 
   def index
     jobs = Job

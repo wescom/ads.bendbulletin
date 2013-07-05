@@ -18,4 +18,11 @@ class ApplicationController < ActionController::Base
       return false
     end
   end
+
+  def require_edit_or_admin
+    unless (current_user.has_role? :edit) or (current_user.has_role? :admin)
+      redirect_to root_path
+      return false
+    end
+  end
 end
