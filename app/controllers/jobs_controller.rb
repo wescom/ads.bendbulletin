@@ -1,6 +1,7 @@
 class JobsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :require_admin, :only => [:index, :edit, :update, :destroy]
+  before_filter :require_admin, :only => [:edit, :update, :destroy]
+  before_filter :require_edit, :only => [:index, :show]
 
   def index
     jobs = Job
@@ -13,6 +14,9 @@ class JobsController < ApplicationController
   end
 
   def new
+    if params[:upload_job_id].nil?
+      redirect_to root_path
+    end
     @upload_type = UploadType.find_by_id(params[:upload_job_id])
     @job = Job.new
     @job.startdate = Time.now
@@ -39,6 +43,12 @@ class JobsController < ApplicationController
         render :action => :new
       end
     end    
+  end
+  
+  def edit
+  end
+
+  def update
   end
 
   def destroy

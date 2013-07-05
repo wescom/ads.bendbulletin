@@ -11,4 +11,11 @@ class ApplicationController < ActionController::Base
       return false
     end
   end
+
+  def require_edit
+    unless current_user.has_role? :edit
+      redirect_to root_path
+      return false
+    end
+  end
 end
