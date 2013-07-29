@@ -4,9 +4,9 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <h1>Files have been uploaded to ads.bendbulletin.com</h1>
+    <h1>Your files have been uploaded to ads.bendbulletin.com</h1>
     <p>
-      <%= @job.name %> has recently uploaded files to be processed. Please go to <%= @url %> to retrieve the files.
+      You have recently uploaded files to be processed.
     </p>
     <p>
 			<h3>Contact Info</h3>
@@ -27,7 +27,8 @@
 					&nbsp;&nbsp;&nbsp;&nbsp;<%= file.file_file_name %><br/>
 				<% end %>
 			</div>
-			&nbsp;&nbsp;<strong>Instructions: </strong><%= @job.instructions %><br/>
+			&nbsp;&nbsp;<strong>Instructions: </strong><%= @job.instructions %><br/><br/>
 		</fieldset>
+		<p>Please do not reply to this email. If you have any questions or concerns about your job, please contact us at ads@bendbulletin.com. </p>
   </body>
 </html>

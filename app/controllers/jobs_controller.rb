@@ -34,6 +34,7 @@ class JobsController < ApplicationController
       @upload_type = UploadType.find_by_id(@job.upload_type_id)
       if @job.save
         JobMailer.job_uploaded_notification(@upload_type,@job).deliver
+        Confirmation.confirmation_notification(@upload_type,@job).deliver
         flash[:notice] = "Job Created"
         redirect_to root_path
       else
