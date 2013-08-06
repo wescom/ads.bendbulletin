@@ -5,7 +5,7 @@ class Confirmation < ActionMailer::Base
     @upload_type = upload_type
     @job = job
     @url  = job_url(@job)
-    mail(:to => job.user.email,
+    mail(:to => job.email,
         :subject => "Ads.BendBulletin.com Confirmation") do |format|
       format.html
 #      format.text
