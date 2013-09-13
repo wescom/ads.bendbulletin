@@ -96,7 +96,7 @@
 							<div class="span4">
 								Original Files Uploaded with Job:
 								<div class="well well-small clearfix">
-									<% @job.job_files.each do |file| %>
+									<% @job.job_files.job_files.each do |file| %>
 										<ul class="">
 											<li>
 												<%= link_to file.file_file_name, file.file.url %><br/>
@@ -108,7 +108,7 @@
 								</div>
 								Worked Files:
 								<div class="well well-small clearfix">
-									<% @job.job_files.each do |file| %>
+									<% @job.job_files.worked_files.each do |file| %>
 										<ul class="">
 											<li>
 												<%= link_to file.file_file_name, file.file.url %><br/>
@@ -123,7 +123,7 @@
 								Proof Files: 
 								<div class="well well-small clearfix">
 									<div class="clearfix">
-										<% @job.job_files.each do |file| %>
+										<% @job.job_files.proof_files.each do |file| %>
 											<ul class="unstyled pull-left">
 												<li class="attached_file_box text-center">
 													<%= link_to image_tag(file.file.url(:thumb), :alt=>"File"), file.file.url %><br/>
@@ -141,6 +141,7 @@
 									<% end %>
 								</div>
 							</div>
+						</div>
 
 						Instructions: 
 						<div class="well well-small">

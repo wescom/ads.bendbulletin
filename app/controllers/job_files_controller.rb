@@ -15,10 +15,10 @@ class JobFilesController < ApplicationController
       redirect_to job_path(@job_file.job_id)
     else
       if @job_file.save
-        flash[:notice] = "job_file Created"
+        flash[:notice] = "File Upload"
         redirect_to job_path(@job_file.job_id)
       else
-        flash[:error] = "job_file Creation Failed"
+        flash[:error] = "File Upload Failed"
         render :action => :new
       end
     end    
@@ -27,10 +27,10 @@ class JobFilesController < ApplicationController
   def destroy
     @job_file = JobFile.find(params[:id])
     if @job_file.destroy
-      flash[:notice] = "job_file Deleted"
+      flash[:notice] = "File Deleted"
       redirect_to job_files_path
     else
-      flash[:error] = "job_file Deletion Failed"
+      flash[:error] = "File Deletion Failed"
       redirect_to job_files_path
     end
   end

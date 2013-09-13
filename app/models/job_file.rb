@@ -20,4 +20,18 @@ class JobFile < ActiveRecord::Base
     end
   end
 
+  class << self
+    def job_files
+      where(:file_type => "job_file")
+    end
+  
+    def worked_files
+      where(:file_type => "worked_file")
+    end
+  
+    def proof_files
+      where(:file_type => "proof_file")
+    end
+  end
+
 end

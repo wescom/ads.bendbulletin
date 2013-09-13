@@ -17,6 +17,7 @@
 
 <%= form_for @job_file, :html => { :multipart => true } do |f| %>
 	<%= f.hidden_field :job_id, :value => params[:job_id] %>
+	<%= f.hidden_field :file_type, :value => params[:file_type] %>
 
 	<div class="well well-small clearfix">
 	  <div class="control-group">
