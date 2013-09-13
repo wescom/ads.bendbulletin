@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20130913225253) do
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
-    t.string   "file_type"
+    t.string   "file_type",         :default => "job_file"
   end
 
   create_table "jobs", :force => true do |t|
