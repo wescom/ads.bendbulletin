@@ -1,5 +1,5 @@
 class JobFile < ActiveRecord::Base
-  attr_accessible :job_id, :file
+  attr_accessible :job_id, :file, :file_type
   
   belongs_to :job
   

@@ -92,17 +92,55 @@
 							<% end %><br/>
 						</div>
 
-						Files Uploaded with Job:
-						<div class="well well-small clearfix">
-							<% @job.job_files.each do |file| %>
-								<ul class="unstyled pull-left">
-									<li class="attached_file_box text-center">
-										<%= link_to image_tag(file.file.url(:thumb), :alt=>"File"), file.file.url %><br/>
-										<%= file.file_file_name %>
-									</li>
-								</ul>
-							<% end %>
-						</div>
+						<div class="clearfix">
+							<div class="span4">
+								Original Files Uploaded with Job:
+								<div class="well well-small clearfix">
+									<% @job.job_files.each do |file| %>
+										<ul class="">
+											<li>
+												<%= link_to file.file_file_name, file.file.url %><br/>
+											</li>
+										</ul>
+									<% end %>
+									<%= link_to "Upload Additional File", new_job_file_path(:job_id=>@job, :file_type=>"job_file"),
+												:class=>"btn btn-primary btn-mini" %>
+								</div>
+								Worked Files:
+								<div class="well well-small clearfix">
+									<% @job.job_files.each do |file| %>
+										<ul class="">
+											<li>
+												<%= link_to file.file_file_name, file.file.url %><br/>
+											</li>
+										</ul>
+									<% end %>
+									<%= link_to "Upload Worked File", new_job_file_path(:job_id=>@job, :file_type=>"worked_file"), 
+												:class=>"btn btn-primary btn-mini" %>
+								</div>
+							</div>
+							<div class="span8">
+								Proof Files: 
+								<div class="well well-small clearfix">
+									<div class="clearfix">
+										<% @job.job_files.each do |file| %>
+											<ul class="unstyled pull-left">
+												<li class="attached_file_box text-center">
+													<%= link_to image_tag(file.file.url(:thumb), :alt=>"File"), file.file.url %><br/>
+													<i class="icon-check"></i> <%= file.file_file_name %></br>
+												</li>
+											</ul>
+										<% end %>
+									</div>
+									<%= link_to "Upload Proof", new_job_file_path(:job_id=>@job, :file_type=>"proof_file"), 
+												:class=>"btn btn-primary btn-mini" %>
+									<% if @job.job_files.present? %>
+										<div class="pull-right">
+											<i class="icon-check"></i> = Approved Proof
+										</div>
+									<% end %>
+								</div>
+							</div>
 
 						Instructions: 
 						<div class="well well-small">

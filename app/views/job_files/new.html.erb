@@ -1,28 +1,38 @@
-<div id="settings-page">
-  <div id="page-content" class="clearfix">
-		<h1>Job Files</h1>
+<% if params[:file_type] == "job_file" %>
+	<h1>Upload New File to Job</h1>
 
-		<div class="inner-box clearfix">
-		  <div id="form-block" class="full_width clearfix">
-				<div id="settings_block">
-					<%= form_for @job_file, :html => { :multipart => true } do |f| %>
-						<div id="settings_inner_block">
-							<div class="setting_header"></div>
-							<div class="setting_body form-horizontal">
-							  <div class="control-group">
-							    <div class="controls">
-								    <%= f.file_field :file %>
-							    </div>
-							  </div>
-							</div>
-							<div>
-								<%= f.submit "Upload", :class => 'submit small'%>
-								<%= f.submit "Cancel", :name => 'cancel_button', :class => 'submit small'%>
-							</div>
-						</div>
-					<% end %>
-				</div>
-			</div>
+<% else %>
+	<% if params[:file_type] == "worked_file" %>
+		<h1>Upload New Worked File to Job</h1>
+
+	<% else %>
+		<% if params[:file_type] == "proof_file" %>
+			<h1>Upload New Proof to Job</h1>
+
+		<% else %>
+
+		<% end %>
+	<% end %>
+<% end %>
+
+<%= form_for @job_file, :html => { :multipart => true } do |f| %>
+	<%= f.hidden_field :job_id, :value => params[:job_id] %>
+
+	<div class="well well-small clearfix">
+	  <div class="control-group">
+	    <div class="controls">
+		    <%= f.file_field :file %>
+	    </div>
+	  </div>
+	</div>
+	<div>
+		<%= f.submit "Upload", :class => 'submit small progress_bar'%>
+		<%= f.submit "Cancel", :name => 'cancel_button', :class => 'submit small'%>
+	</div>
+	<div id="ProgressModal" class="modal hide fade">
+		<div class="modal-header text-center">
+			<h3>Uploading Files</h3><img class="spinner" src="/assets/Spinner.gif">
 		</div>
 	</div>
-</div>
+
+<% end %>
