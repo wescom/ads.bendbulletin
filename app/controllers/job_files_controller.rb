@@ -19,7 +19,7 @@ class JobFilesController < ApplicationController
         redirect_to job_path(@job_file.job_id)
       else
         flash[:error] = "File Upload Failed"
-        render :action => :new
+        redirect_to new_job_file_path(params[:job_file])
       end
     end    
   end

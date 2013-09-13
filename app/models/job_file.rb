@@ -2,7 +2,9 @@ class JobFile < ActiveRecord::Base
   attr_accessible :job_id, :file, :file_type
   
   belongs_to :job
-  
+
+  validates_presence_of :file, :on => :create, :message=>'File is required'
+
   has_attached_file :file, 
       :styles => { 
         :thumb => ["200x200>",:jpg]
