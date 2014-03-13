@@ -9,5 +9,7 @@ AdUpload::Application.routes.draw do
   resources :global_settings
   resources :upload_types
   resources :jobs
-  resources :job_files
+  resources :job_files do
+    post :approve
+  end
 end

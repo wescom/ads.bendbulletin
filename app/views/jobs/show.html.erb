@@ -99,7 +99,9 @@
 									<% @job.job_files.job_files.each do |file| %>
 										<ul class="">
 											<li>
-												<%= link_to file.file_file_name, file.file.url %><br/>
+												<%= link_to file.file_file_name, file.file.url %> - 
+												<%= file.file_updated_at.strftime('%m/%d/%Y at %I:%M%p') %>
+												<br/>
 											</li>
 										</ul>
 									<% end %>
@@ -111,12 +113,16 @@
 									<% @job.job_files.worked_files.each do |file| %>
 										<ul class="">
 											<li>
-												<%= link_to file.file_file_name, file.file.url %><br/>
+												<%= link_to file.file_file_name, file.file.url %> - 
+												<%= file.file_updated_at.strftime('%m/%d/%Y at %I:%M%p') %>
+												<br/>
 											</li>
 										</ul>
 									<% end %>
-									<%= link_to "Upload Worked File", new_job_file_path(:job_id=>@job, :file_type=>"worked_file"), 
-												:class=>"btn btn-primary btn-mini" %>
+									<% if (current_user.has_role? :edit) or (current_user.has_role? :admin) %>
+										<%= link_to "Upload Worked File", new_job_file_path(:job_id=>@job, :file_type=>"worked_file"), 
+													:class=>"btn btn-primary btn-mini" %>
+									<% end %>
 								</div>
 							</div>
 							<div class="span8">
@@ -127,16 +133,24 @@
 											<ul class="unstyled pull-left">
 												<li class="attached_file_box text-center">
 													<%= link_to image_tag(file.file.url(:thumb), :alt=>"File"), file.file.url %><br/>
-													<i class="icon-check"></i> <%= file.file_file_name %></br>
+													<%= file.file_file_name %>
+													<% if file.approved %>
+														<i class="icon-check"></i>
+													<% else %>
+														</br><%= link_to "Approve File?", job_file_approve_path(:job_file_id=>file.id, :approve => true), 
+																	:method => :post, :class=>"btn btn-primary btn-mini" %>
+													<% end %>
 												</li>
 											</ul>
 										<% end %>
 									</div>
-									<%= link_to "Upload Proof", new_job_file_path(:job_id=>@job, :file_type=>"proof_file"), 
-												:class=>"btn btn-primary btn-mini" %>
+									<% if (current_user.has_role? :edit) or (current_user.has_role? :admin) %>
+										<%= link_to "Upload Proof", new_job_file_path(:job_id=>@job.id, :file_type=>"proof_file"), 
+													:class=>"btn btn-primary btn-mini" %>
+									<% end %>
 									<% if @job.job_files.present? %>
 										<div class="pull-right">
-											<i class="icon-check"></i> = Approved Proof
+											<div class="checkbox"><i class="icon-check"></i> = Approved Proof </div>
 										</div>
 									<% end %>
 								</div>

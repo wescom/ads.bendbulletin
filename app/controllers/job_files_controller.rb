@@ -23,7 +23,7 @@ class JobFilesController < ApplicationController
       end
     end    
   end
-  
+
   def destroy
     @job_file = JobFile.find(params[:id])
     if @job_file.destroy
@@ -32,6 +32,18 @@ class JobFilesController < ApplicationController
     else
       flash[:error] = "File Deletion Failed"
       redirect_to job_files_path
+    end
+  end
+
+  def approve
+    @job_file = JobFile.find(params[:job_file_id])
+    @job_file.approved = true unless @job_file.nil?
+    if @job_file.save
+      flash[:notice] = "File Approved"
+      redirect_to job_path(@job_file.job_id)
+    else
+      flash[:error] = "File Approval Failed"
+      redirect_to new_job_file_path(params[:job_file])
     end
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130913225253) do
+ActiveRecord::Schema.define(:version => 20140313185825) do
 
   create_table "global_settings", :force => true do |t|
     t.text     "general_instructions"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20130913225253) do
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
     t.string   "file_type",         :default => "job_file"
+    t.boolean  "approved",          :default => false
   end
 
   create_table "jobs", :force => true do |t|

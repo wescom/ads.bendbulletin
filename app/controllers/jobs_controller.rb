@@ -1,11 +1,13 @@
 class JobsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :require_admin, :only => [:edit, :update, :destroy]
-  before_filter :require_edit_or_admin, :only => [:index, :show]
+#  before_filter :require_edit_or_admin, :only => [:index]
 
   def index
     jobs = Job
-    jobs = jobs.where(:user_id => params[:user_id]) if params[:user_id].present?
+    if (current_user.has_role? :view)
+      jobs = jobs.where(:user_id => current_user.id) unless current_user.nil?
+    end
     @jobs = jobs.paginate(:page => params[:page], :per_page => 10, :order => 'created_at DESC')
   end
 

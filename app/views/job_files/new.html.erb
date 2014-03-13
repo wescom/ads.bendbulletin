@@ -1,13 +1,13 @@
 <% if params[:file_type] == "job_file" %>
-	<h1>Upload New File to Job</h1>
+	<h1>Upload New File to Job #<%= @job.id %></h1>
 
 <% else %>
 	<% if params[:file_type] == "worked_file" %>
-		<h1>Upload New Worked File to Job</h1>
+		<h1>Upload New Worked File to Job #<%= @job.id %></h1>
 
 	<% else %>
 		<% if params[:file_type] == "proof_file" %>
-			<h1>Upload New Proof to Job</h1>
+			<h1>Upload New Proof to Job #<%= @job.id %></h1>
 
 		<% else %>
 

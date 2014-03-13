@@ -3,6 +3,7 @@
 		<div class="navbar-inner">
 		  <ul class="nav">
 		    <li><%= link_to "Home", root_url %></li>
+		    <li><%= link_to "My Jobs", jobs_url %></li>
 				<% get_menu_tabs().each do |f| %>
 			    <li><%= link_to f.name, upload_type_path(f) %></li>
 				<% end %>
