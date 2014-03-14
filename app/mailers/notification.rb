@@ -49,4 +49,16 @@ class Notification < ActionMailer::Base
       format.html
     end
   end
+
+  # Proof Approved
+  def proof_approved_notification(job_file,upload_type)
+    @upload_type = upload_type
+    @job_file = job_file
+
+    recipient = upload_type.email_recipient
+    subject = "Proof Approved"
+    mail(:to => recipient, :subject => subject) do |format|
+      format.html
+    end
+  end
 end

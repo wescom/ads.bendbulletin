@@ -49,4 +49,16 @@ class Confirmation < ActionMailer::Base
       format.html
     end
   end
+
+  # Proof Approved
+  def confirmation_proof_approved(job_file,upload_type,current_user)
+    @upload_type = upload_type
+    @job_file = job_file
+
+    recipient = current_user.email
+    subject = "Ads.BendBulletin.com Confirmation - Proof Approved"
+    mail(:to => recipient, :subject => subject) do |format|
+      format.html
+    end
+  end
 end
