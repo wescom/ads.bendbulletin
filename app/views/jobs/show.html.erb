@@ -35,7 +35,7 @@
 							</div>
 						</div>
 
-						Job Info:
+						<h5>Job Info:</h5>
 						<div class="well well-small">
 							<% if @job.upload_type.get_startdate %>
 								StartDate: <%= @job.startdate.strftime('%m/%d/%Y') %><br/>
@@ -94,12 +94,12 @@
 
 						<div class="clearfix">
 							<div class="span4">
-								Original Files Uploaded with Job:
+								<h5>Original Files Uploaded with Job:</h5>
 								<div class="well well-small clearfix">
 									<% @job.job_files.job_files.each do |file| %>
 										<ul class="">
 											<li>
-												<%= link_to file.file_file_name, file.file.url %> - 
+												<%= link_to file.file_file_name, job_file_download_path(file) %> - 
 												<%= file.file_updated_at.strftime('%m/%d/%Y at %I:%M%p') %>
 												<br/>
 											</li>
@@ -110,12 +110,12 @@
 													:class=>"btn btn-primary btn-mini" %>
 									<% end %>
 								</div>
-								Worked Files:
+								<h5>Worked Files:</h5>
 								<div class="well well-small clearfix">
 									<% @job.job_files.worked_files.each do |file| %>
 										<ul class="">
 											<li>
-												<%= link_to file.file_file_name, file.file.url %> - 
+												<%= link_to file.file_file_name, job_file_download_path(file) %> - 
 												<%= file.file_updated_at.strftime('%m/%d/%Y at %I:%M%p') %>
 												<br/>
 											</li>
@@ -128,19 +128,22 @@
 								</div>
 							</div>
 							<div class="span8">
-								Proof Files: 
+								<h5>Proof Files:</h5>
+								<i>(click proof to download)</i>
 								<div class="well well-small clearfix">
 									<div class="clearfix">
 										<% @job.job_files.proof_files.each do |file| %>
 											<ul class="unstyled pull-left">
 												<li class="attached_file_box text-center">
-													<%= link_to image_tag(file.file.url(:thumb), :alt=>"File"), file.file.url %><br/>
+													<%= link_to image_tag(file.file.url(:thumb), :alt=>"File"), job_file_download_path(file) %><br/>
 													<%= file.file_file_name %>
 													<% if file.approved %>
 														<i class="icon-check"></i>
 													<% else %>
-														</br><%= link_to "Approve File?", job_file_approve_path(:job_file_id=>file.id, :approve => true), 
-																	:method => :post, :class=>"btn btn-primary btn-mini" %>
+														</br><%= link_to "Approve Proof?", job_file_approve_path(:job_file_id=>file.id, :approve => true), 
+																	:method => :post, 
+																	:confirm => "Are you sure you want to approve this proof?",
+																	:class=>"btn btn-primary btn-mini" %>
 													<% end %>
 												</li>
 											</ul>

@@ -13,5 +13,6 @@ AdUpload::Application.routes.draw do
   get 'myjobs', :to => "jobs#myjobs"
   resources :job_files do
     post :approve
+    get :download
   end
 end

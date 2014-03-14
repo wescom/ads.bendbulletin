@@ -43,6 +43,16 @@ class JobFilesController < ApplicationController
     end
   end
 
+  def download
+    @current_user = current_user
+    @job_file = JobFile.find(params[:job_file_id])
+    if (@job_file.job.user_id == @current_user.id) or (@current_user.has_role? :edit) or (@current_user.has_role? :admin)
+      send_file @job_file.file.path
+    else
+      redirect_to job_path(@job_file.job_id)
+    end
+  end
+
   def approve
     @current_user = current_user
     @job_file = JobFile.find(params[:job_file_id])
