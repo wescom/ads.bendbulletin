@@ -95,6 +95,7 @@
 						<div class="clearfix">
 							<div class="span4">
 								<h5>Original Files Uploaded with Job:</h5>
+								<i>(click filename to download)</i>
 								<div class="well well-small clearfix">
 									<% @job.job_files.job_files.each do |file| %>
 										<ul class="">
@@ -111,6 +112,7 @@
 									<% end %>
 								</div>
 								<h5>Worked Files:</h5>
+								<i>(click filename to download)</i>
 								<div class="well well-small clearfix">
 									<% @job.job_files.worked_files.each do |file| %>
 										<ul class="">
