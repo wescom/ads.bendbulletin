@@ -8,7 +8,9 @@ AdUpload::Application.routes.draw do
   
   resources :global_settings
   resources :upload_types
+  
   resources :jobs
+  get 'myjobs', :to => "jobs#myjobs"
   resources :job_files do
     post :approve
   end

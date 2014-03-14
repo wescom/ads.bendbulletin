@@ -4,10 +4,15 @@ class JobsController < ApplicationController
 #  before_filter :require_edit_or_admin, :only => [:index]
 
   def index
+    # Returns all jobs in database
     jobs = Job
-    if (current_user.has_role? :view)
-      jobs = jobs.where(:user_id => current_user.id) unless current_user.nil?
-    end
+    @jobs = jobs.paginate(:page => params[:page], :per_page => 10, :order => 'created_at DESC')
+  end
+
+  def myjobs
+    # Returns jobs for a current user
+    jobs = Job
+    jobs = jobs.where(:user_id => current_user.id) unless current_user.nil?
     @jobs = jobs.paginate(:page => params[:page], :per_page => 10, :order => 'created_at DESC')
   end
 
