@@ -1,13 +1,13 @@
-class Confirmation < ActionMailer::Base
+class Notification < ActionMailer::Base
   default :from => "no-reply@utility.wescompapers.com"
 
   # New job uploaded to database
-  def confirmation_new_job(upload_type,job,current_user)
+  def job_uploaded_notification(upload_type,job)
     @upload_type = upload_type
     @job = job
 
-    recipient = current_user.email
-    subject = "Ads.BendBulletin.com Confirmation"
+    recipient = upload_type.email_recipient
+    subject = "Files have been uploaded to ads.bendbulletin.com"
     mail(:to => recipient, :subject => subject) do |format|
       format.html
 #      format.text
@@ -15,36 +15,36 @@ class Confirmation < ActionMailer::Base
   end
 
   # New job_file added to a job
-  def confirmation_new_job_file(job_file,upload_type,current_user)
+  def new_job_file_notification(job_file,upload_type)
     @upload_type = upload_type
     @job_file = job_file
 
-    recipient = current_user.email
-    subject = "Ads.BendBulletin.com Confirmation - New File Added"
+    recipient = upload_type.email_recipient
+    subject = "New Job File Uploaded"
     mail(:to => recipient, :subject => subject) do |format|
       format.html
     end
   end
 
   # New worked file added to a job
-  def confirmation_new_worked_file(job_file,upload_type,current_user)
+  def new_worked_file_notification(job_file,upload_type)
     @upload_type = upload_type
     @job_file = job_file
 
-    recipient = current_user.email
-    subject = "Ads.BendBulletin.com Confirmation - New File Added"
+    recipient = job_file.job.email
+    subject = "New Worked File Uploaded"
     mail(:to => recipient, :subject => subject) do |format|
       format.html
     end
   end
 
   # New proof added to a job
-  def confirmation_new_proof_file(job_file,upload_type,current_user)
+  def new_proof_file_notification(job_file,upload_type)
     @upload_type = upload_type
     @job_file = job_file
 
-    recipient = current_user.email
-    subject = "Ads.BendBulletin.com Confirmation - Proof Added"
+    recipient = job_file.job.email
+    subject = "New Proof Uploaded"
     mail(:to => recipient, :subject => subject) do |format|
       format.html
     end

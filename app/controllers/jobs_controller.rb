@@ -33,6 +33,7 @@ class JobsController < ApplicationController
 
   def create
     @global_settings = GlobalSettings.all
+    @current_user = current_user
     if params[:cancel_button]
       redirect_to root_path
     else
@@ -40,8 +41,8 @@ class JobsController < ApplicationController
       @job.user_id = current_user.id
       @upload_type = UploadType.find_by_id(@job.upload_type_id)
       if @job.save
-        JobMailer.job_uploaded_notification(@upload_type,@job).deliver
-        Confirmation.confirmation_notification(@upload_type,@job).deliver
+        Notification.job_uploaded_notification(@upload_type,@job).deliver
+        Confirmation.confirmation_new_job(@upload_type,@job,@current_user).deliver
         flash[:notice] = "Job Created"
         redirect_to root_path
       else

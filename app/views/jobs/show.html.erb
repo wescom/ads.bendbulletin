@@ -105,8 +105,10 @@
 											</li>
 										</ul>
 									<% end %>
-									<%= link_to "Upload Additional File", new_job_file_path(:job_id=>@job, :file_type=>"job_file"),
-												:class=>"btn btn-primary btn-mini" %>
+									<% if current_user.id == @job.user_id %>
+										<%= link_to "Upload Additional File", new_job_file_path(:job_id=>@job, :file_type=>"job_file"),
+													:class=>"btn btn-primary btn-mini" %>
+									<% end %>
 								</div>
 								Worked Files:
 								<div class="well well-small clearfix">

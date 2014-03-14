@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>New Proof uploaded to Job #<%= @job_file.job.id %></h1>
+    <p>
+      Proof '<%= @job_file.file_file_name %>' has been added to <%= job_url(@job_file.job) %>. Please verify the proof and Approve when ready.
+    </p>
+
+		<p>
+			<h3>Contact Info</h3>
+			&nbsp;&nbsp;<strong>Name: </strong><%= @job_file.job.name %><br/>
+			&nbsp;&nbsp;<% if @job_file.job.company %><strong>Company: </strong><%= @job_file.job.company %><br/><% end %>
+			&nbsp;&nbsp;<% if @job_file.job.email %><strong>Email: </strong><%= @job_file.job.email %><br/><% end %>
+			&nbsp;&nbsp;<% if @job_file.job.phonenum %><strong>Phone: </strong><%= @job_file.job.phonenum %><br/><% end %>
+			&nbsp;&nbsp;<% if @job_file.job.phonenum2 and @job_file.job.phonenum2.length>0 %><strong>Phone2: </strong><%= @job_file.job.phonenum2 %><br/><% end %>
+    </p>
+
+		<fieldset>
+			<h3>Job Info:</h3>
+			&nbsp;&nbsp;<strong>Job Type: </strong><%= @upload_type.name %><br/>
+			&nbsp;&nbsp;<strong>StartDate: </strong><%= @job_file.job.startdate %><br/>
+			&nbsp;&nbsp;<strong>Proofs:</strong><br/>
+			<div class="indent">
+				<% @job_file.job.job_files.each do |file| %>
+					<% if file.file_type == "proof_file" %>
+						&nbsp;&nbsp;&nbsp;&nbsp;<%= file.file_file_name %>
+						<% if file.approved %>
+							- approved<br/>
+						<% else %>
+							- added <%= file.file_updated_at.strftime('%m/%d/%Y at %I:%M%p') %><br/>
+						<% end %>
+					<% end %>
+				<% end %>
+			</div>
+			&nbsp;&nbsp;<% if @job_file.job.phonenum %><strong>Instructions: </strong><%= @job_file.job.instructions %><br/><% end %>
+		</fieldset>
+  </body>
+</html>
