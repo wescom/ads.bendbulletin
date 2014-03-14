@@ -5,8 +5,8 @@
   </head>
   <body>
     <h1>Your files have been uploaded to ads.bendbulletin.com</h1>
-    <p>
-      You have recently uploaded files to be processed.
+		<p>
+      View your job submission at <%= job_url(@job) %>.
     </p>
     <p>
 			<h3>Contact Info</h3>
@@ -19,6 +19,7 @@
 
 		<fieldset>
 			<h3>Job Info:</h3>
+			&nbsp;&nbsp;<strong>Job ID: </strong><%= @upload_type.id %><br/>
 			&nbsp;&nbsp;<strong>Job Type: </strong><%= @upload_type.name %><br/>
 			&nbsp;&nbsp;<strong>StartDate: </strong><%= @job.startdate %><br/>
 			&nbsp;&nbsp;<strong>Files Uploaded with Job:</strong><br/>
@@ -29,6 +30,7 @@
 			</div>
 			&nbsp;&nbsp;<strong>Instructions: </strong><%= @job.instructions %><br/><br/>
 		</fieldset>
+		<br/>
 		<p>Please do not reply to this email. If you have any questions or concerns about your job, please contact us at ads@bendbulletin.com. </p>
   </body>
 </html>
