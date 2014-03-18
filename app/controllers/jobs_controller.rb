@@ -10,9 +10,13 @@ class JobsController < ApplicationController
   end
 
   def myjobs
-    # Returns jobs for a current user
     jobs = Job
-    jobs = jobs.where(:user_id => current_user.id) unless current_user.nil?
+    # Display specific user if specified, otherwise display current users jobs
+    if params[:user_id].nil?
+      jobs = jobs.where(:user_id => current_user.id) unless current_user.nil?
+    else
+      jobs = jobs.where(:user_id=>params[:user_id])
+    end
     @jobs = jobs.paginate(:page => params[:page], :per_page => 10, :order => 'created_at DESC')
   end
 
