@@ -137,7 +137,17 @@
 										<% @job.job_files.proof_files.each do |file| %>
 											<ul class="unstyled pull-left">
 												<li class="attached_file_box text-center">
-													<%= link_to image_tag(file.file.url(:thumb), :alt=>"File"), job_file_download_path(file) %><br/>
+													<div id="image_<%= file.id%>" class="file_thumb">
+														<div class="file_thumb_image">
+															<%= link_to image_tag(file.file.url(:thumb), :alt=>"File"), job_file_download_path(file) %>
+															<div class="file_thumb_delete_icon">
+																<%= link_to "X", job_file_path(file), 
+																			:method => :delete, 
+																			:confirm => "Are you sure you want to delete file?",
+																			:action => 'destroy',
+																			:class => 'btn btn-mini' %>
+														</div>
+													</div>
 													<%= file.file_file_name %>
 													<% if file.approved %>
 														<i class="icon-check"></i>

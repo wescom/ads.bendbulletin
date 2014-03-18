@@ -34,12 +34,13 @@ class JobFilesController < ApplicationController
 
   def destroy
     @job_file = JobFile.find(params[:id])
+    @job = @job_file.job
     if @job_file.destroy
       flash[:notice] = "File Deleted"
-      redirect_to job_files_path
+      redirect_to job_path(@job)
     else
       flash[:error] = "File Deletion Failed"
-      redirect_to job_files_path
+      redirect_to job_path(@job)
     end
   end
 
