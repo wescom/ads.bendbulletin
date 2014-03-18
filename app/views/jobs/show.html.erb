@@ -102,13 +102,15 @@
 											<li>
 												<%= link_to file.file_file_name, job_file_download_path(file) %> - 
 												<%= file.file_updated_at.strftime('%m/%d/%Y at %I:%M%p') %>
-												<div class="pull-right">
-													<%= link_to "X", job_file_path(file), 
-																:method => :delete, 
-																:confirm => "Are you sure you want to delete file?",
-																:action => 'destroy',
-																:class => 'btn btn-mini' %>
-												</div>
+												<% if (current_user.has_role? :edit) or (current_user.has_role? :admin) %>
+													<div class="pull-right">
+														<%= link_to "X", job_file_path(file), 
+																	:method => :delete, 
+																	:confirm => "Are you sure you want to delete file?",
+																	:action => 'destroy',
+																	:class => 'btn btn-mini' %>
+													</div>
+												<% end %>
 												<br/>
 											</li>
 										</ul>
@@ -126,13 +128,15 @@
 											<li>
 												<%= link_to file.file_file_name, job_file_download_path(file) %> - 
 												<%= file.file_updated_at.strftime('%m/%d/%Y at %I:%M%p') %>
-												<div class="pull-right">
-													<%= link_to "X", job_file_path(file), 
-																:method => :delete, 
-																:confirm => "Are you sure you want to delete file?",
-																:action => 'destroy',
-																:class => 'btn btn-mini' %>
-												</div>
+												<% if (current_user.has_role? :edit) or (current_user.has_role? :admin) %>
+													<div class="pull-right">
+														<%= link_to "X", job_file_path(file), 
+																	:method => :delete, 
+																	:confirm => "Are you sure you want to delete file?",
+																	:action => 'destroy',
+																	:class => 'btn btn-mini' %>
+													</div>
+												<% end %>
 												<br/>
 											</li>
 										</ul>
@@ -154,12 +158,15 @@
 													<div id="image_<%= file.id%>" class="file_thumb">
 														<div class="file_thumb_image">
 															<%= link_to image_tag(file.file.url(:thumb), :alt=>"File"), job_file_download_path(file) %>
-															<div class="file_thumb_delete_icon">
-																<%= link_to "X", job_file_path(file), 
-																			:method => :delete, 
-																			:confirm => "Are you sure you want to delete file?",
-																			:action => 'destroy',
-																			:class => 'btn btn-mini' %>
+															<% if (current_user.has_role? :edit) or (current_user.has_role? :admin) %>
+																<div class="file_thumb_delete_icon">
+																	<%= link_to "X", job_file_path(file), 
+																				:method => :delete, 
+																				:confirm => "Are you sure you want to delete file?",
+																				:action => 'destroy',
+																				:class => 'btn btn-mini' %>
+																</div>
+															<% end %>
 														</div>
 													</div>
 													<%= file.file_file_name %>
