@@ -8,6 +8,7 @@
 				<% else %>
 	    		<li><%= link_to "All Jobs", jobs_url %></li>
 				<% end %>
+				<li><a> | </a></li>
 				<% get_menu_tabs().each do |f| %>
 			    <li><%= link_to f.name, upload_type_path(f) %></li>
 				<% end %>
