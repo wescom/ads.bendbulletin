@@ -102,6 +102,13 @@
 											<li>
 												<%= link_to file.file_file_name, job_file_download_path(file) %> - 
 												<%= file.file_updated_at.strftime('%m/%d/%Y at %I:%M%p') %>
+												<div class="pull-right">
+													<%= link_to "X", job_file_path(file), 
+																:method => :delete, 
+																:confirm => "Are you sure you want to delete file?",
+																:action => 'destroy',
+																:class => 'btn btn-mini' %>
+												</div>
 												<br/>
 											</li>
 										</ul>
@@ -119,6 +126,13 @@
 											<li>
 												<%= link_to file.file_file_name, job_file_download_path(file) %> - 
 												<%= file.file_updated_at.strftime('%m/%d/%Y at %I:%M%p') %>
+												<div class="pull-right">
+													<%= link_to "X", job_file_path(file), 
+																:method => :delete, 
+																:confirm => "Are you sure you want to delete file?",
+																:action => 'destroy',
+																:class => 'btn btn-mini' %>
+												</div>
 												<br/>
 											</li>
 										</ul>
