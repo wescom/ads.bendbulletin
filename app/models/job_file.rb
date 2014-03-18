@@ -11,7 +11,8 @@ class JobFile < ActiveRecord::Base
       },
       :url => "/system/uploaded_files/:id/:style_:basename.:extension",  
       :path => ":rails_root/public/system/uploaded_files/:id/:style_:basename.:extension",
-      :default_url => '/assets/no-image.jpg'
+      #:default_url => '/images/no-image.jpg'
+      :default_url => "/images/no-image.jpg"
 
   before_post_process :process_file?
   def process_file?
