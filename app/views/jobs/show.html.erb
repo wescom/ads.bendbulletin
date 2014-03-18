@@ -171,7 +171,8 @@
 													</div>
 													<%= file.file_file_name %>
 													<% if file.approved %>
-														<i class="icon-check"></i>
+														<br/><i class="icon-check"></i>
+														<%= file.approved_at.strftime('%m/%d/%Y at %I:%M%p') unless file.approved_at.nil? %>
 													<% else %>
 														</br><%= link_to "Approve Proof?", job_file_approve_path(:job_file_id=>file.id, :approve => true), 
 																	:method => :post, 

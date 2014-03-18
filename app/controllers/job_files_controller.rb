@@ -58,6 +58,7 @@ class JobFilesController < ApplicationController
     @current_user = current_user
     @job_file = JobFile.find(params[:job_file_id])
     @job_file.approved = true unless @job_file.nil?
+    @job_file.approved_at = Time.now unless @job_file.nil?
     @upload_type = UploadType.find_by_id(@job_file.job.upload_type_id)
     if @job_file.save
       Notification.proof_approved_notification(@job_file,@upload_type).deliver if @job_file.file_type == "proof_file"

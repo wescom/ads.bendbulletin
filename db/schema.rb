@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20140313185825) do
     t.datetime "file_updated_at"
     t.string   "file_type",         :default => "job_file"
     t.boolean  "approved",          :default => false
+    t.datetime "approved_at"
   end
 
   create_table "jobs", :force => true do |t|
