@@ -92,6 +92,11 @@
 							<% end %><br/>
 						</div>
 
+						<h5>Instructions:</h5>
+						<div class="well well-small">
+							<%= @job.instructions %>
+						</div>
+
 						<div class="clearfix">
 							<div class="span4">
 								<h5>Original Files Uploaded with Job:</h5>
@@ -157,7 +162,15 @@
 												<li class="attached_file_box text-center">
 													<div id="image_<%= file.id%>" class="file_thumb">
 														<div class="file_thumb_image">
-															<%= link_to image_tag(file.file.url(:thumb), :alt=>"File"), job_file_download_path(file) %>
+															<% if file.file_content_type == 'application/postscript' %>
+																<a title="By Everaldo Coelho (YellowIcon) [LGPL (http://www.gnu.org/licenses/lgpl.html)], via Wikimedia Commons" 
+																		href="http://commons.wikimedia.org/wiki/File%3AMime_postscript.png">
+																	<img class="ps_image" width="256" alt="Mime postscript"
+																		src="//upload.wikimedia.org/wikipedia/commons/f/fc/Mime_postscript.png"/>
+																</a>
+															<% else %>
+																<%= link_to image_tag(file.file.url(:thumb), :alt=>"File"), job_file_download_path(file) %>
+															<% end %>
 															<% if (current_user.has_role? :edit) or (current_user.has_role? :admin) %>
 																<div class="file_thumb_delete_icon">
 																	<%= link_to "X", job_file_path(file), 
@@ -184,7 +197,7 @@
 										<% end %>
 									</div>
 									<% if (current_user.has_role? :edit) or (current_user.has_role? :admin) %>
-										<%= link_to "Upload Proof", new_job_file_path(:job_id=>@job.id, :file_type=>"proof_file"), 
+										<br/><%= link_to "Upload Proof", new_job_file_path(:job_id=>@job.id, :file_type=>"proof_file"), 
 													:class=>"btn btn-primary btn-mini" %>
 									<% end %>
 									<% if @job.job_files.present? %>
@@ -194,11 +207,6 @@
 									<% end %>
 								</div>
 							</div>
-						</div>
-
-						Instructions: 
-						<div class="well well-small">
-							<%= @job.instructions %>
 						</div>
 
 					</fieldset>
