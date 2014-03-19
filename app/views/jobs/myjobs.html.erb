@@ -1,7 +1,7 @@
 <div id="jobs-page">
 	<div id="page-content" class="clearfix">
 		<h1>
-			Jobs for <%= @jobs.first.user.name %>
+			Jobs <%= "for "+@jobs.first.user.name unless @jobs.first.nil? %>
 		</h1>
 		<span class="pull-right"></span>
 
