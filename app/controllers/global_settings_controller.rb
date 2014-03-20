@@ -4,7 +4,7 @@ class GlobalSettingsController < ApplicationController
   
   def index
     @settings = GlobalSettings.find(:all)
-    @upload_types = UploadType.find(:all)
+    @upload_types = UploadType.find(:all, :order => 'tab_sort')
   end
   
   def edit

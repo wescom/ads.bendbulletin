@@ -32,7 +32,7 @@ module ApplicationHelper
   end
 
   def get_menu_tabs
-    @upload_types = UploadType.find(:all)
+    @upload_types = UploadType.find(:all, :order => 'tab_sort')
   end
 
 end

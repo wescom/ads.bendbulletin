@@ -1,8 +1,9 @@
 class UploadTypesController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :require_admin
 
   def index
-    @upload_types = UploadType.find(:all)
+    @upload_types = UploadType.find(:all, :order => 'tab_sort')
   end
 
   def show

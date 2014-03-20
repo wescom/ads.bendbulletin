@@ -13,6 +13,9 @@
 						<label>Tab Name:</label>
 						<%= form.text_field :tab_name, :class => "large", :placeholder=>"Enter name for menu tab" %>
 						<%= error_messages(@upload_type, "tab_name") %>
+						<label>Tab Sort Order:</label>
+						<%= form.text_field :tab_sort, :class => "large", :placeholder=>"Order to display tab in the navbar" %>
+						<%= error_messages(@upload_type, "tab_sort") %>
 
 						<label>Description:</label>
 						<%= form.text_area :description, :style=>"width:80%;height:100px", :placeholder=>"Enter description" %>
