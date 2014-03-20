@@ -7,8 +7,8 @@
 	      <th><div class="text-center">Email</div></th>
 	      <th><div class="text-center">Registered</div></th>
 	      <th><div class="text-center">Role</div></th>
-	      <th><div class="text-center">Account</div></th>
 	      <th><div class="text-center">Jobs</div></th>
+	      <th><div class="text-center">Account</div></th>
 	    </tr>
 	  </thead>
 	  <tbody>
@@ -28,20 +28,22 @@
 							<%= render user %>
 						</div>
 					</td>
-		      <td>
-						<div class="text-center">
-							<%= link_to("Edit", edit_user_path(user), :class => 'btn btn-mini') %>
-							<%= link_to("Delete user", user_path(user), 
-													:data => { :confirm => "Are you sure?" }, 
-													:method => :delete, 
-													:class => 'btn btn-mini') if (user != current_user) and (current_user.has_role? :admin) %>
-						</div>
-					</td>
 					<td>
 						<div class="text-center">
 							<% if user.jobs.present? %>
 								<%= link_to("List Jobs", myjobs_path(:user_id => user), :class => 'btn btn-mini') %>
 							<% end %>
+						</div>
+					</td>
+					<td>
+						<div class="text-center">
+							<ul class="inline">
+								<li><%= link_to("Edit", edit_user_path(user), :class => 'btn btn-mini') %></li>
+								<li><%= link_to("Delete", user_path(user), 
+													:data => { :confirm => "Are you sure you want to delete user?" }, 
+													:method => :delete, 
+													:class => 'btn btn-mini') if (user != current_user) and (current_user.has_role? :admin) %></li>
+							</ul>
 						</div>
 					</td>
 				</tr>
