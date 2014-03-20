@@ -10,7 +10,7 @@
 				<% end %>
 				<li><a> | </a></li>
 				<% get_menu_tabs().each do |f| %>
-			    <li><%= link_to f.name, upload_type_path(f) %></li>
+			    <li><%= link_to f.tab_name, upload_type_path(f) %></li>
 				<% end %>
 		  </ul>
 		</div>
