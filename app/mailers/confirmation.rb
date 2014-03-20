@@ -2,11 +2,10 @@ class Confirmation < ActionMailer::Base
   default :from => "no-reply@utility.wescompapers.com"
 
   # New job uploaded to database
-  def confirmation_new_job(upload_type,job,current_user)
+  def confirmation_new_job(upload_type,job,recipient)
     @upload_type = upload_type
     @job = job
 
-    recipient = current_user.email
     subject = "Ads.BendBulletin.com Confirmation"
     mail(:to => recipient, :subject => subject) do |format|
       format.html
