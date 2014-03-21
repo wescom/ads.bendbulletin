@@ -5,8 +5,9 @@ class JobsController < ApplicationController
 
   def index
     # Returns all jobs in database
-    jobs = Job
-    @jobs = jobs.paginate(:page => params[:page], :per_page => 10, :order => 'created_at DESC')
+    @jobs = Job
+    @jobs = @jobs.where('name LIKE ? or company LIKE ?', "%#{params[:search_query]}%", "%#{params[:search_query]}%") if params[:search_query].present?
+    @jobs = @jobs.paginate(:page => params[:page], :per_page => 20, :order => 'created_at DESC')
   end
 
   def myjobs
