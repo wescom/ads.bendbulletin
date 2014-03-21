@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140320190037) do
+ActiveRecord::Schema.define(:version => 20140321160637) do
 
   create_table "global_settings", :force => true do |t|
     t.text     "general_instructions"
@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(:version => 20140320190037) do
     t.boolean  "get_files_to_run",     :default => false
     t.datetime "created_at",                              :null => false
     t.datetime "updated_at",                              :null => false
+    t.string   "email_replyto"
   end
 
   create_table "users", :force => true do |t|

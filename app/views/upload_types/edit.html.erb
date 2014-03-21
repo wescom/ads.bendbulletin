@@ -37,8 +37,11 @@
 						</ul>
 						
 						<label>Email Recipient (whom to email when job is created):</label>
-						<%= form.text_field :email_recipient, :class => "large", :placeholder=>"email" %>
+						<%= form.text_field :email_recipient, :class => "large", :placeholder=>"Email Recipient" %>
 						<%= error_messages(@upload_type, "email_recipient") %>
+						<label>Email ReplyTo (whom customers should email for correspondence):</label>
+						<%= form.text_field :email_replyto, :class => "large", :placeholder=>"ReplyTo" %>
+						<%= error_messages(@upload_type, "email_replyto") %>
 						
 						<br/>
 						<%= form.submit "Update", :class => 'btn btn-primary'%>
