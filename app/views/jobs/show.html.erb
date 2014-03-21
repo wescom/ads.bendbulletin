@@ -1,7 +1,10 @@
-<div id="upload_types-page">
+<div id="jobs-page">
 	<div id="page-content" class="clearfix">
 		<h3>
 			Job #<%= @job.id %>
+			<span class="pull-right">
+				<%= mail_to @job.upload_type.email_replyto, "Email Us", :class=>"btn btn-primary", :target => "_blank" %>
+			</span>
 		</h3>
 
 		<div class="inner-box clearfix">
