@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140321160637) do
+ActiveRecord::Schema.define(:version => 20140321215304) do
 
   create_table "global_settings", :force => true do |t|
     t.text     "general_instructions"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20140321160637) do
     t.boolean  "disclaimer"
   end
 
+  add_index "jobs", ["company"], :name => "index_jobs_on_company"
   add_index "jobs", ["name"], :name => "index_jobs_on_name"
   add_index "jobs", ["upload_type_id"], :name => "index_jobs_on_upload_type_id"
   add_index "jobs", ["user_id"], :name => "index_jobs_on_user_id"
