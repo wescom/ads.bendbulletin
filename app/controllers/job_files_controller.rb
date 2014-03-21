@@ -1,5 +1,7 @@
 class JobFilesController < ApplicationController
-
+  before_filter :authenticate_user!
+  before_filter :require_edit_or_admin, :only => [:index, :destroy]
+  
   def index
     @job_files = JobFile.find(:all)
   end

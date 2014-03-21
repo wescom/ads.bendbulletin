@@ -1,7 +1,7 @@
 class JobsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :require_admin, :only => [:edit, :update, :destroy]
-#  before_filter :require_edit_or_admin, :only => [:index]
+  before_filter :require_edit_or_admin, :only => [:index]
 
   def index
     # Returns all jobs in database
@@ -22,6 +22,9 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
+    if @job.user_id != current_user.id and !((current_user.has_role? :edit) or (current_user.has_role? :admin))
+      redirect_to myjobs_path
+    end
   end
 
   def new

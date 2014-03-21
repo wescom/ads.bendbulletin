@@ -19,7 +19,7 @@ role :app, "ads2.bendbulletin.com"                       # This may be the same 
 role :db,  "ads2.bendbulletin.com", :primary => true     # This is where Rails migrations will run
 
 # if you want to clean up old releases on each deploy uncomment this:
-after 'deploy:restart', 'deploy:cleanup'
+#after 'deploy:restart', 'deploy:cleanup'
 
 # Unicorn tasks
 require 'capistrano-unicorn'

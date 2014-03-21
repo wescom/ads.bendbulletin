@@ -8,5 +8,6 @@ class UploadType < ActiveRecord::Base
   validates_presence_of :name, :message=>'Name is required'
   validates_presence_of :tab_name, :message=>'Tab Name is required'
   validates_presence_of :email_recipient, :message=>'Email Recipient is required'
+  validates_presence_of :email_replyto, :message=>'Email RepyTo is required'
   
 end
