@@ -1,6 +1,17 @@
 class Confirmation < ActionMailer::Base
   default :from => "no-reply@utility.wescompapers.com"
 
+  # Welcome email when registering
+  def confirmation_new_register(user)
+    @user = user
+    recipient = @user.email
+    
+    subject = "Welcome to Ads.BendBulletin.com"
+    mail(:to => recipient, :subject => subject) do |format|
+      format.html
+    end
+  end
+
   # New job uploaded to database
   def confirmation_new_job(upload_type,job,recipient)
     @upload_type = upload_type

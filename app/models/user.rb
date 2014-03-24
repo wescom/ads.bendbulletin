@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
                   :company, :acct_no, :phonenum, :phonenum2, :fax, :address1, :address2, :city, :state, :zip
   
   before_create :set_default_role
+  after_create :send_welcome_email 
   
   has_many :jobs
   
@@ -21,5 +22,8 @@ class User < ActiveRecord::Base
   def set_default_role
     self.add_role :view
   end
-  
+
+  def send_welcome_email
+    Confirmation.confirmation_new_register(self).deliver
+  end  
 end
