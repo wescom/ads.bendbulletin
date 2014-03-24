@@ -24,7 +24,24 @@
 	box-shadow: 0 1px 2px rgba(0,0,0,.15);
 }
 
+.login-form {
+	padding: 1em 1em 4em 1em;
+	min-height: 220px;
+	border: 1px solid #ccc;
+	border-right-color: #999;
+	border-bottom-color: #999;
+	-webkit-border-radius: 8px 8px 8px 8px;
+	-moz-border-radius: 8px 8px 8px 8px;
+	border-radius: 8px 8px 8px 8px;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+	box-shadow: 0 1px 2px rgba(0,0,0,.15);
+}
+.login-form input[type="text"] {width: 95%; height: 40px;}
+.login-form input[type="password"] {width: 95%; height: 40px;}
+
 .indent {margin-left: 30px !important;}
+
 .files_to_upload {
 	display: block;
 	width: 25%;
