@@ -1,0 +1,31 @@
+<div id="email_texts-page">
+	<div id="page-content" class="clearfix">
+		<h3>Email:  <%= @email_text.name %></h3>
+
+		<div class="inner-box clearfix">
+		  <div id="form-block" class="grid_15">
+				<%= form_for @email_text, :url => email_text_path do |form| %>
+					<fieldset>
+						<label>Pre-Text:</label>
+						<%= form.text_area :pretext, :style=>"width:80%;height:100px", 
+							:placeholder=>"Text at beginning of email" %>
+						<label>Post-Text:</label>
+						<%= form.text_area :posttext, :style=>"width:80%;height:100px", 
+							:placeholder=>"Text at conclusion of email" %>
+
+						<ul class="unstyled">
+						Info to include in body of email:
+							<li><label class="checkbox"><%= form.check_box :show_contact_info %>Show Contact Info</label></li>
+							<li><label class="checkbox"><%= form.check_box :show_job_info %>Show Job Info</label></li>
+							<li><label class="checkbox"><%= form.check_box :show_job_file_info %>Show Job File Info</label></li>
+						</ul>
+						
+						<br/>
+						<%= form.submit "Update", :class => 'btn btn-primary'%>
+						<%= form.submit "Cancel", :name => 'cancel_button', :class => 'btn btn-primary'%>
+					</fieldset>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

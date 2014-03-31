@@ -13,18 +13,21 @@ class JobFilesController < ApplicationController
 
   def create
     @job_file = JobFile.new(params[:job_file])
+    @confirmation_email_text = EmailText.find_by_name_and_email_type('Upload New File', 'confirmation')
+    @notification_email_text = EmailText.find_by_name_and_email_type('Upload New File', 'notification')
     @current_user = current_user
+
     if params[:cancel_button]
       redirect_to job_path(@job_file.job_id)
     else
       @upload_type = UploadType.find_by_id(@job_file.job.upload_type_id)
       if @job_file.save
-        Notification.new_job_file_notification(@job_file,@upload_type).deliver if @job_file.file_type == "job_file"
-        Notification.new_worked_file_notification(@job_file,@upload_type).deliver if @job_file.file_type == "worked_file"
-        Notification.new_proof_file_notification(@job_file,@upload_type).deliver if @job_file.file_type == "proof_file"
-        Confirmation.confirmation_new_job_file(@job_file,@upload_type,@current_user.email).deliver if @job_file.file_type == "job_file"
-        Confirmation.confirmation_new_worked_file(@job_file,@upload_type,@current_user.email).deliver if @job_file.file_type == "worked_file"
-        Confirmation.confirmation_new_proof_file(@job_file,@upload_type,@current_user.email).deliver if @job_file.file_type == "proof_file"
+        Notification.new_job_file_notification(@job_file,@upload_type,@notification_email_text).deliver if @job_file.file_type == "job_file"
+        Notification.new_worked_file_notification(@job_file,@upload_type,@notification_email_text).deliver if @job_file.file_type == "worked_file"
+        Notification.new_proof_file_notification(@job_file,@upload_type,@notification_email_text).deliver if @job_file.file_type == "proof_file"
+        Confirmation.confirmation_new_job_file(@job_file,@upload_type,@current_user.email,@confirmation_email_text).deliver if @job_file.file_type == "job_file"
+        Confirmation.confirmation_new_worked_file(@job_file,@upload_type,@current_user.email,@confirmation_email_text).deliver if @job_file.file_type == "worked_file"
+        Confirmation.confirmation_new_proof_file(@job_file,@upload_type,@current_user.email,@confirmation_email_text).deliver if @job_file.file_type == "proof_file"
         flash[:notice] = "File Upload"
         redirect_to job_path(@job_file.job_id)
       else
@@ -61,10 +64,13 @@ class JobFilesController < ApplicationController
     @job_file = JobFile.find(params[:job_file_id])
     @job_file.approved = true unless @job_file.nil?
     @job_file.approved_at = Time.now unless @job_file.nil?
+    @confirmation_email_text = EmailText.find_by_name_and_email_type('Proof Approved', 'confirmation')
+    @notification_email_text = EmailText.find_by_name_and_email_type('Proof Approved', 'notification')
     @upload_type = UploadType.find_by_id(@job_file.job.upload_type_id)
+
     if @job_file.save
-      Notification.proof_approved_notification(@job_file,@upload_type).deliver if @job_file.file_type == "proof_file"
-      Confirmation.confirmation_proof_approved(@job_file,@upload_type,@current_user.email).deliver if @job_file.file_type == "proof_file"
+      Notification.proof_approved_notification(@job_file,@upload_type,@notification_email_text).deliver if @job_file.file_type == "proof_file"
+      Confirmation.confirmation_proof_approved(@job_file,@upload_type,@current_user.email,@confirmation_email_text).deliver if @job_file.file_type == "proof_file"
       flash[:notice] = "Proof Approved"
       redirect_to job_path(@job_file.job_id)
     else

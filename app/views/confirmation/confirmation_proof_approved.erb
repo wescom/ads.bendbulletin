@@ -6,7 +6,41 @@
   <body>
     <h1>Proof '<%= @job_file.file_file_name %>' has been approved.</h1>
 		<p>
+      <%= @email_text.pretext unless @email_text.pretext.nil? %>.
+    </p>
+		<p>
       View the job at <%= job_url(@job_file.job) %>.
+    </p>
+		<% if @email_text.show_contact_info %>
+	    <p>
+				<h3>Contact Info</h3>
+				&nbsp;&nbsp;<strong>Name: </strong><%= @job_file.job.name %><br/>
+				&nbsp;&nbsp;<% if @job_file.job.company %><strong>Company: </strong><%= @job_file.job.company %><br/><% end %>
+				&nbsp;&nbsp;<% if @job_file.job.email %><strong>Email: </strong><%= @job_file.job.email %><br/><% end %>
+				&nbsp;&nbsp;<% if @job_file.job.phonenum %><strong>Phone: </strong><%= @job_file.job.phonenum %><br/><% end %>
+				&nbsp;&nbsp;<% if @job_file.job.phonenum2 and @job_file.job.phonenum2.length>0 %><strong>Phone2: </strong><%= @job_file.job.phonenum2 %><br/><% end %>
+	    </p>
+		<% end %>
+
+		<fieldset>
+			<% if @email_text.show_job_info %>
+				<h3>Job Info:</h3>
+				&nbsp;&nbsp;<strong>Job ID: </strong><%= @job_file.job.id %><br/>
+				&nbsp;&nbsp;<strong>Job Type: </strong><%= @upload_type.name %><br/>
+				&nbsp;&nbsp;<strong>StartDate: </strong><%= @job_file.job.startdate %><br/>
+				&nbsp;&nbsp;<strong>Files Uploaded with Job:</strong><br/>
+				<% if @email_text.show_job_file_info %>
+					<div class="indent">
+						<% @job_file.job.job_files.each do |file| %>
+							&nbsp;&nbsp;&nbsp;&nbsp;<%= file.file_file_name %><br/>
+						<% end %>
+					</div>
+				<% end %>
+			<% end %>
+			&nbsp;&nbsp;<strong>Instructions: </strong><%= @job_file.job.instructions %><br/><br/>
+		</fieldset>
+		<p>
+      <%= @email_text.posttext unless @email_text.posttext.nil? %>.
     </p>
 		<p>Please do not reply to this email. If you have any questions or concerns about your job, please contact us at <%= @upload_type.email_replyto %>. </p>
   </body>

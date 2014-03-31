@@ -1,0 +1,32 @@
+<div id="email-page">
+  <div id="page-content" class="clearfix">
+
+		<div class="inner-box clearfix">
+		  <div id="form-block" class="full_width clearfix">
+				<div id="settings_block">
+					<h3>
+						Email Customization
+						<span class="pull-right">
+						</span>
+					</h3>
+					<div class="setting_header">
+					</div>
+					<div class="setting_body">
+			      <% unless @email_texts.nil? %>
+			        <table class="table table-bordered table-hover table-condensed">
+			          <tbody>
+			            <thead>
+			              <th><div class="text-center">Email Type</div></td>
+			              <th><div class="text-center">Name</div></td>
+			              <th><div class="text-center">Action</div></td>
+			            </thead>
+									<%= render :partial => 'email_texts/table_row', :collection => @email_texts %>
+			          </tbody>
+			        </table>
+			      <% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -2,9 +2,10 @@ class Notification < ActionMailer::Base
   default :from => "no-reply@utility.wescompapers.com"
 
   # New job uploaded to database
-  def job_uploaded_notification(upload_type,job)
+  def job_uploaded_notification(upload_type,job,email_text)
     @upload_type = upload_type
     @job = job
+    @email_text = email_text
 
     recipient = upload_type.email_recipient
     subject = "Files have been uploaded to ads.bendbulletin.com"
@@ -15,9 +16,10 @@ class Notification < ActionMailer::Base
   end
 
   # New job_file added to a job
-  def new_job_file_notification(job_file,upload_type)
+  def new_job_file_notification(job_file,upload_type,email_text)
     @upload_type = upload_type
     @job_file = job_file
+    @email_text = email_text
 
     recipient = upload_type.email_recipient
     subject = "New Job File Uploaded"
@@ -27,9 +29,10 @@ class Notification < ActionMailer::Base
   end
 
   # New worked file added to a job
-  def new_worked_file_notification(job_file,upload_type)
+  def new_worked_file_notification(job_file,upload_type,email_text)
     @upload_type = upload_type
     @job_file = job_file
+    @email_text = email_text
 
     recipient = job_file.job.email
     subject = "New Worked File Uploaded"
@@ -39,9 +42,10 @@ class Notification < ActionMailer::Base
   end
 
   # New proof added to a job
-  def new_proof_file_notification(job_file,upload_type)
+  def new_proof_file_notification(job_file,upload_type,email_text)
     @upload_type = upload_type
     @job_file = job_file
+    @email_text = email_text
 
     recipient = job_file.job.email
     subject = "New Proof Uploaded"
@@ -51,9 +55,10 @@ class Notification < ActionMailer::Base
   end
 
   # Proof Approved
-  def proof_approved_notification(job_file,upload_type)
+  def proof_approved_notification(job_file,upload_type,email_text)
     @upload_type = upload_type
     @job_file = job_file
+    @email_text = email_text
 
     recipient = upload_type.email_recipient
     subject = "Proof Approved"

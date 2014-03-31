@@ -5,29 +5,41 @@
   </head>
   <body>
     <h1>Files have been uploaded to ads.bendbulletin.com</h1>
+		<p>
+      <%= @email_text.pretext unless @email_text.pretext.nil? %>.
+    </p>
     <p>
       <%= @job.name %> has recently uploaded files to be processed. Please go to <%= job_url(@job) %> to retrieve the files.
     </p>
-    <p>
-			<h3>Contact Info</h3>
-			&nbsp;&nbsp;<strong>Name: </strong><%= @job.name %><br/>
-			&nbsp;&nbsp;<% if @job.company %><strong>Company: </strong><%= @job.company %><br/><% end %>
-			&nbsp;&nbsp;<% if @job.email %><strong>Email: </strong><%= @job.email %><br/><% end %>
-			&nbsp;&nbsp;<% if @job.phonenum %><strong>Phone: </strong><%= @job.phonenum %><br/><% end %>
-			&nbsp;&nbsp;<% if @job.phonenum2 and @job.phonenum2.length>0 %><strong>Phone2: </strong><%= @job.phonenum2 %><br/><% end %>
-    </p>
+		<% if @email_text.show_contact_info %>
+	    <p>
+				<h3>Contact Info</h3>
+				&nbsp;&nbsp;<strong>Name: </strong><%= @job.name %><br/>
+				&nbsp;&nbsp;<% if @job.company %><strong>Company: </strong><%= @job.company %><br/><% end %>
+				&nbsp;&nbsp;<% if @job.email %><strong>Email: </strong><%= @job.email %><br/><% end %>
+				&nbsp;&nbsp;<% if @job.phonenum %><strong>Phone: </strong><%= @job.phonenum %><br/><% end %>
+				&nbsp;&nbsp;<% if @job.phonenum2 and @job.phonenum2.length>0 %><strong>Phone2: </strong><%= @job.phonenum2 %><br/><% end %>
+	    </p>
+		<% end %>
 
 		<fieldset>
-			<h3>Job Info:</h3>
-			&nbsp;&nbsp;<strong>Job Type: </strong><%= @upload_type.name %><br/>
-			&nbsp;&nbsp;<strong>StartDate: </strong><%= @job.startdate %><br/>
-			&nbsp;&nbsp;<strong>Files Uploaded with Job:</strong><br/>
-			<div class="indent">
-				<% @job.job_files.each do |file| %>
-					&nbsp;&nbsp;&nbsp;&nbsp;<%= file.file_file_name %><br/>
+			<% if @email_text.show_job_info %>
+				<h3>Job Info:</h3>
+				&nbsp;&nbsp;<strong>Job Type: </strong><%= @upload_type.name %><br/>
+				&nbsp;&nbsp;<strong>StartDate: </strong><%= @job.startdate %><br/>
+				&nbsp;&nbsp;<strong>Files Uploaded with Job:</strong><br/>
+				<% if @email_text.show_job_file_info %>
+					<div class="indent">
+						<% @job.job_files.each do |file| %>
+							&nbsp;&nbsp;&nbsp;&nbsp;<%= file.file_file_name %><br/>
+						<% end %>
+					</div>
 				<% end %>
-			</div>
+			<% end %>
 			&nbsp;&nbsp;<strong>Instructions: </strong><%= @job.instructions %><br/>
 		</fieldset>
+		<p>
+      <%= @email_text.posttext unless @email_text.posttext.nil? %>.
+    </p>
   </body>
 </html>

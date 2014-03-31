@@ -8,6 +8,7 @@ AdUpload::Application.routes.draw do
   
   resources :global_settings
   resources :upload_types
+  resources :email_texts
   
   resources :jobs
   get 'myjobs', :to => "jobs#myjobs"

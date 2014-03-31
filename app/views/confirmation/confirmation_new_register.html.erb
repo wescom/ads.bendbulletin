@@ -8,13 +8,21 @@
 		<p>
       Welcome to Ads.BendBulletin.com.
     </p>
-    <p>
-			<h3>Account Info</h3>
-			&nbsp;&nbsp;<strong>Name: </strong><%= @user.name %><br/>
-			&nbsp;&nbsp;<% if @user.company %><strong>Company: </strong><%= @user.company %><br/><% end %>
-			&nbsp;&nbsp;<% if @user.email %><strong>Email: </strong><%= @user.email %><br/><% end %>
-			&nbsp;&nbsp;<% if @user.phonenum %><strong>Phone: </strong><%= @user.phonenum %><br/><% end %>
-			&nbsp;&nbsp;<% if @user.phonenum2 and @user.phonenum2.length>0 %><strong>Phone2: </strong><%= @user.phonenum2 %><br/><% end %>
+		<p>
+      <%= @email_text.pretext unless @email_text.pretext.nil? %>.
+    </p>
+		<% if @email_text.show_contact_info %>
+	    <p>
+				<h3>Account Info</h3>
+				&nbsp;&nbsp;<strong>Name: </strong><%= @user.name %><br/>
+				&nbsp;&nbsp;<% if @user.company %><strong>Company: </strong><%= @user.company %><br/><% end %>
+				&nbsp;&nbsp;<% if @user.email %><strong>Email: </strong><%= @user.email %><br/><% end %>
+				&nbsp;&nbsp;<% if @user.phonenum %><strong>Phone: </strong><%= @user.phonenum %><br/><% end %>
+				&nbsp;&nbsp;<% if @user.phonenum2 and @user.phonenum2.length>0 %><strong>Phone2: </strong><%= @user.phonenum2 %><br/><% end %>
+	    </p>
+		<% end %>
+		<p>
+      <%= @email_text.posttext unless @email_text.posttext.nil? %>.
     </p>
 		<br/>
 		<p>Please do not reply to this email. If you have any questions or concerns about your job, please contact us.%>. </p>

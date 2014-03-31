@@ -41,7 +41,10 @@ class JobsController < ApplicationController
 
   def create
     @global_settings = GlobalSettings.all
+    @confirmation_email_text = EmailText.find_by_name_and_email_type('Upload New Job', 'confirmation')
+    @notification_email_text = EmailText.find_by_name_and_email_type('Upload New Job', 'notification')
     @current_user = current_user
+
     if params[:cancel_button]
       redirect_to root_path
     else
@@ -49,10 +52,10 @@ class JobsController < ApplicationController
       @job.user_id = current_user.id
       @upload_type = UploadType.find_by_id(@job.upload_type_id)
       if @job.save
-        Notification.job_uploaded_notification(@upload_type,@job).deliver
-        Confirmation.confirmation_new_job(@upload_type,@job,@current_user.email).deliver
+        Notification.job_uploaded_notification(@upload_type,@job,@notification_email_text).deliver
+        Confirmation.confirmation_new_job(@upload_type,@job,@current_user.email,@confirmation_email_text).deliver
         if @job.email != @current_user.email
-          Confirmation.confirmation_new_job(@upload_type,@job,@job.email).deliver
+          Confirmation.confirmation_new_job(@upload_type,@job,@job.email,@confirmation_email_text).deliver
         end
         flash[:notice] = "Job Created"
         redirect_to root_path

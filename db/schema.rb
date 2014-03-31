@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140321215304) do
+ActiveRecord::Schema.define(:version => 20140329150907) do
+
+  create_table "email_texts", :force => true do |t|
+    t.string   "name"
+    t.string   "email_type"
+    t.string   "subject"
+    t.text     "header"
+    t.text     "pretext"
+    t.text     "posttext"
+    t.boolean  "show_contact_info",  :default => true
+    t.boolean  "show_job_info",      :default => true
+    t.boolean  "show_job_file_info", :default => true
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+  end
 
   create_table "global_settings", :force => true do |t|
     t.text     "general_instructions"
