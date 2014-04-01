@@ -3,14 +3,14 @@
 		<h3>Email:  <%= @email_text.name %></h3>
 
 		<div class="inner-box clearfix">
-		  <div id="form-block" class="grid_15">
+		  <div id="form-block" class="span7">
 				<%= form_for @email_text, :url => email_text_path do |form| %>
 					<fieldset>
 						<label>Pre-Text:</label>
-						<%= form.text_area :pretext, :style=>"width:80%;height:100px", 
+						<%= form.text_area :pretext, :style=>"width:90%;height:100px", 
 							:placeholder=>"Text at beginning of email" %>
 						<label>Post-Text:</label>
-						<%= form.text_area :posttext, :style=>"width:80%;height:100px", 
+						<%= form.text_area :posttext, :style=>"width:90%;height:100px", 
 							:placeholder=>"Text at conclusion of email" %>
 
 						<ul class="unstyled">
@@ -25,6 +25,10 @@
 						<%= form.submit "Cancel", :name => 'cancel_button', :class => 'btn btn-primary'%>
 					</fieldset>
 				<% end %>
+			</div>
+		  <div id="form-block" class="span5">
+				<h4>Sample email</h4>
+				<img class="img-responsive" width="100%" src="/images/sample_job_email.jpg"/>
 			</div>
 		</div>
 	</div>
