@@ -4,6 +4,7 @@ class JobFile < ActiveRecord::Base
   belongs_to :job
 
   validates_presence_of :file, :on => :create, :message=>'File is required'
+  do_not_validate_attachment_file_type :file
 
   has_attached_file :file, 
       :styles => { 

@@ -28,11 +28,20 @@ class JobFilesController < ApplicationController
         Confirmation.confirmation_new_job_file(@job_file,@upload_type,@current_user.email,@confirmation_email_text).deliver if @job_file.file_type == "job_file"
         Confirmation.confirmation_new_worked_file(@job_file,@upload_type,@current_user.email,@confirmation_email_text).deliver if @job_file.file_type == "worked_file"
         Confirmation.confirmation_new_proof_file(@job_file,@upload_type,@current_user.email,@confirmation_email_text).deliver if @job_file.file_type == "proof_file"
-        flash[:notice] = "File Upload"
-        redirect_to job_path(@job_file.job_id)
+        flash[:notice] = "File Uploaded"
+#        redirect_to job_path(@job_file.job_id)
+        respond_to do |format|
+          format.html { redirect_to job_path(@job_file.job_id), notice: 'File Uploaded.' } 
+          format.json { 
+            data = {id: @job_file.id, thumb: view_context.image_tag(@job_file.file.url(:thumb))} 
+            render json: data, status: :created, location: @job_file 
+          }
+        end
       else
         flash[:error] = "File Upload Failed"
-        redirect_to new_job_file_path(params[:job_file])
+#        redirect_to new_job_file_path(params[:job_file])
+        format.html { redirect_to new_job_file_path(params[:job_file]) } 
+        format.json { render json: @job_file.errors, status: :unprocessable_entity }
       end
     end    
   end
