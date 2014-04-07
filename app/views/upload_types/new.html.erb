@@ -37,6 +37,10 @@
 						<%= form.text_field :email_recipient, :class => "large", :placeholder=>"email" %>
 						<%= error_messages(@upload_type, "email_recipient") %>
 
+						<label>Email ReplyTo (email address to include at bottom of all emails):</label>
+						<%= form.text_field :email_replyto, :class => "large", :placeholder=>"ReplyTo" %>
+						<%= error_messages(@email_replyto, "email_replyto") %>
+
 						<br/>
 						<%= form.submit "Create", :class => 'btn btn-primary'%>
 						<%= form.submit "Cancel", :name => 'cancel_button', :class => 'btn btn-primary'%>
