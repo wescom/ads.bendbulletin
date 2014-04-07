@@ -50,11 +50,18 @@ class UploadTypesController < ApplicationController
 
   def destroy
     @upload_type = UploadType.find(params[:id])
-    if @upload_type.destroy
-      flash[:notice] = "Upload Type Killed!"
-      redirect_to global_settings_path
+    @jobs_count = Job.where(:upload_type_id => @upload_type).count
+    Rails.logger.info @jobs_count
+    if @jobs_count == 0
+      if @upload_type.destroy
+        flash[:notice] = "Upload Type Killed!"
+        redirect_to global_settings_path
+      else
+        flash[:error] = "Upload Type Deletion Failed"
+        redirect_to global_settings_path
+      end
     else
-      flash[:error] = "Upload Type Deletion Failed"
+      flash[:error] = "Deletion Failed: Jobs still exist for Upload Type"
       redirect_to global_settings_path
     end
   end
