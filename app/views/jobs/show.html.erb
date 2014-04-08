@@ -38,7 +38,7 @@
 						<h5>Job Info:</h5>
 						<div class="well well-small">
 							<% if @job.upload_type.get_startdate %>
-								StartDate: <%= @job.startdate.strftime('%m/%d/%Y') %><br/>
+								StartDate: <%= @job.startdate.strftime('%m/%d/%y') %><br/>
 							<% end %>
 
 							<% if @job.upload_type.get_application_used %>
@@ -106,7 +106,7 @@
 										<ul class="">
 											<li>
 												<%= link_to file.file_file_name, job_file_download_path(file) %> - 
-												<%= file.file_updated_at.strftime('%m/%d/%Y at %I:%M%p') %>
+												<%= file.file_updated_at.strftime('%m/%d/%y at %I:%M%p') %>
 												<% if (current_user.has_role? :edit) or (current_user.has_role? :admin) %>
 													<div class="pull-right">
 														<%= link_to "X", job_file_path(file), 
@@ -132,7 +132,7 @@
 										<ul class="">
 											<li>
 												<%= link_to file.file_file_name, job_file_download_path(file) %> - 
-												<%= file.file_updated_at.strftime('%m/%d/%Y at %I:%M%p') %>
+												<%= file.file_updated_at.strftime('%m/%d/%y at %I:%M%p') %>
 												<% if (current_user.has_role? :edit) or (current_user.has_role? :admin) %>
 													<div class="pull-right">
 														<%= link_to "X", job_file_path(file), 
@@ -190,7 +190,7 @@
 													<%= file.file_file_name %>
 													<% if file.approved %>
 														<br/><i class="icon-check"></i>
-														<%= file.approved_at.strftime('%m/%d/%Y at %I:%M%p') unless file.approved_at.nil? %>
+														<%= file.approved_at.strftime('%m/%d/%y at %I:%M%p') unless file.approved_at.nil? %>
 													<% else %>
 														</br><%= link_to "Approve Proof?", job_file_approve_path(:job_file_id=>file.id, :approve => true), 
 																	:method => :post, 
