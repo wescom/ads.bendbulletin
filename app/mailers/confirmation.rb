@@ -1,5 +1,5 @@
 class Confirmation < ActionMailer::Base
-  default :from => "no-reply@utility.wescompapers.com"
+  default :from => "adsmail@adsmail.bendbulletin.com"
 
   # Welcome email when registering
   def confirmation_new_register(user)
@@ -11,6 +11,7 @@ class Confirmation < ActionMailer::Base
     mail(:to => recipient, :subject => subject) do |format|
       format.html
     end
+    Rails.logger.info "*** Confirmation Sent ***"
   end
 
   # New job uploaded to database
@@ -24,6 +25,7 @@ class Confirmation < ActionMailer::Base
       format.html
 #      format.text
     end
+    Rails.logger.info "*** Confirmation Sent ***"
   end
 
   # New job_file added to a job
@@ -36,6 +38,7 @@ class Confirmation < ActionMailer::Base
     mail(:to => recipient, :subject => subject) do |format|
       format.html
     end
+    Rails.logger.info "*** Confirmation Sent ***"
   end
 
   # New worked file added to a job
@@ -48,6 +51,7 @@ class Confirmation < ActionMailer::Base
     mail(:to => recipient, :subject => subject) do |format|
       format.html
     end
+    Rails.logger.info "*** Confirmation Sent ***"
   end
 
   # New proof added to a job
@@ -60,6 +64,7 @@ class Confirmation < ActionMailer::Base
     mail(:to => recipient, :subject => subject) do |format|
       format.html
     end
+    Rails.logger.info "*** Confirmation Sent ***"
   end
 
   # Proof Approved
@@ -72,5 +77,6 @@ class Confirmation < ActionMailer::Base
     mail(:to => recipient, :subject => subject) do |format|
       format.html
     end
+    Rails.logger.info "*** Confirmation Sent ***"
   end
 end

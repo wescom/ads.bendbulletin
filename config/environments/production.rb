@@ -70,13 +70,19 @@ AdUpload::Application.configure do
   config.action_mailer.default :charset => "utf-8"
 
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    domain: "gmail.com",
+#    address: "smtp.gmail.com",
+#    port: 587,
+#    domain: "gmail.com",
+#    authentication: "plain",
+#    enable_starttls_auto: true,
+#    user_name: ENV["GMAIL_USERNAME"],
+#    password: ENV["GMAIL_PASSWORD"]
+    address: "172.16.128.103",
+    domain: "adsmail.bendbulletin.com",
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_PASSWORD"]
+    user_name: "adsmail",
+    password: "4ViGaKRoxqrZT6qKzEkG"
   }
 
 

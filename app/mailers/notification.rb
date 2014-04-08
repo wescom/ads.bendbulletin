@@ -1,5 +1,5 @@
 class Notification < ActionMailer::Base
-  default :from => "no-reply@utility.wescompapers.com"
+  default :from => "adsmail@adsmail.bendbulletin.com"
 
   # New job uploaded to database
   def job_uploaded_notification(upload_type,job,email_text)
@@ -13,6 +13,7 @@ class Notification < ActionMailer::Base
       format.html
 #      format.text
     end
+    Rails.logger.info "*** Notification Sent ***"
   end
 
   # New job_file added to a job
@@ -26,6 +27,7 @@ class Notification < ActionMailer::Base
     mail(:to => recipient, :subject => subject) do |format|
       format.html
     end
+    Rails.logger.info "*** Notification Sent ***"
   end
 
   # New worked file added to a job
@@ -39,6 +41,7 @@ class Notification < ActionMailer::Base
     mail(:to => recipient, :subject => subject) do |format|
       format.html
     end
+    Rails.logger.info "*** Notification Sent ***"
   end
 
   # New proof added to a job
@@ -52,6 +55,7 @@ class Notification < ActionMailer::Base
     mail(:to => recipient, :subject => subject) do |format|
       format.html
     end
+    Rails.logger.info "*** Notification Sent ***"
   end
 
   # Proof Approved
@@ -65,5 +69,6 @@ class Notification < ActionMailer::Base
     mail(:to => recipient, :subject => subject) do |format|
       format.html
     end
+    Rails.logger.info "*** Notification Sent ***"
   end
 end
