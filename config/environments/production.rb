@@ -78,11 +78,12 @@ AdUpload::Application.configure do
 #    user_name: ENV["GMAIL_USERNAME"],
 #    password: ENV["GMAIL_PASSWORD"]
     address: "172.16.128.103",
-    domain: "adsmail.bendbulletin.com",
-    authentication: "plain",
-    enable_starttls_auto: true,
+    domain: "bendbulletin.com",
     user_name: "adsmail",
-    password: "4ViGaKRoxqrZT6qKzEkG"
+    password: "4ViGaKRoxqrZT6qKzEkG",
+    authentication: "plain",
+    enable_starttls_auto: => true,
+    openssl_verify_mode:  => 'none'
   }
 
 
