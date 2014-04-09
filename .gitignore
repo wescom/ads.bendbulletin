@@ -21,7 +21,7 @@ db/schema.rb
 Gemfile.lock
 /log/*
 /tmp/*
-/config/aaplication.yml
+/config/application.yml
 
 # various artifacts
 **.war
