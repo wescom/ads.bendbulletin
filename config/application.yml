@@ -9,6 +9,8 @@
 #
 GMAIL_USERNAME: reports@utility.wescompapers.com
 GMAIL_PASSWORD: re2BCKreports
+SMTP_USERNAME: adsmail
+SMTP_PASSWORD: 4ViGaKRoxqrZT6qKzEkG
 ADMIN_NAME: admin
 ADMIN_EMAIL: admin@wescompapers.com
 ADMIN_PASSWORD: password
