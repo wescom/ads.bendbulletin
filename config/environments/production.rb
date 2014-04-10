@@ -66,8 +66,7 @@ AdUpload::Application.configure do
   # Setup for production - deliveries, no errors raised
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default :charset => "utf-8"
+   config.action_mailer.default :charset => "utf-8"
 
   config.action_mailer.smtp_settings = {
 #    address: "smtp.gmail.com",
@@ -78,10 +77,10 @@ AdUpload::Application.configure do
 #    user_name: ENV["GMAIL_USERNAME"],
 #    password: ENV["GMAIL_PASSWORD"]
     address: "172.16.128.103",
-    domain: "bendbulletin.com",
     user_name: ENV["SMTP_USERNAME"],
     password: ENV["SMTP_PASSWORD"],
-    authentication: "plain"
+    authentication: "plain",
+    openssl_verify_mode: 'none'
   }
 
 
