@@ -60,5 +60,11 @@
 			<div><ul id="upload" class="span12 list-inline pull-left"></ul></div>
 		</div>
 	<% end %>
-	<%= link_to "Done", job_path(@job), :class=>"btn btn-primary" %>
+	<%= link_to "Done", job_path(@job), :class=>"btn btn-primary progress_bar" %>
 <% end %>
+
+<div id="ProgressModal" class="modal fade">
+	<div class="modal-header text-center">
+		<h3>Uploading Files</h3><img class="spinner" src="/assets/Spinner.gif">
+	</div>
+</div>
