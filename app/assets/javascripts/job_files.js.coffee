@@ -32,7 +32,7 @@ $(document).ready ->
 		dropZone: $('#dropzone'), 
 		
 		add: (e, data) -> 
-			tpl = $('<li class="upload_file_box text-center"><input type="text" value="0" data-width="48" data-height="48"'+ 
+			tpl = $('<li id="upload_file_box" class="attached_file_box_small text-center"><input type="text" value="0" data-width="48" data-height="48"'+ 
 			' data-fgColor="#0788a5" data-readOnly="1" data-bgColor="#3e4043" /><p></p></li>') 
 		
 			# Append the file name and file size 
@@ -56,11 +56,23 @@ $(document).ready ->
 			progress = parseInt(data.loaded / data.total * 100, 10) 
 			# Update the hidden input field and trigger a change 
 			# so that the jQuery knob plugin knows to update the dial 
-			data.context.find("input").val(progress).change() 
+			data.context.find("input").val(progress).change()
+			console.log(data.context.find("p"))
+			# console.log(progress) if progress is 100
+			data.context.find("span").remove() if progress is 100
+			data.context.find("div").replaceWith('<img class="attached_file_thumb" alt="Yes check" src="//upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Yes_check.svg/512px-Yes_check.svg.png"/>') if progress is 100
 			data.context.removeClass "working" if progress is 100 
+
+		done: (e, data) -> 
+			file = data.result 
+			console.log( data.textStatus, file.id, file.thumb, file.file_file_size ) 
+			# data.context.find("div").replaceWith("<div class='file_thumb_image'>" + file.thumb + "</div>")
+			# $('#done_btn').removeClass "hide"
 			
+
 		fail: (e, data) -> 
-			data.context.addClass "Upload Failed" 
+			data.context.find("div").replaceWith('<img class="attached_file_thumb" src="http://upload.wikimedia.org/wikipedia/commons/f/f0/Error.svg"/>')
+			data.context.addClass "Upload_Failed" 
 		}) 
 			
 	formatFileSize = (bytes) -> 
