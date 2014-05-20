@@ -6,7 +6,7 @@
 app_path = "/u/apps/ads.bendbulletin.com/current"
 
 # Set unicorn options
-worker_processes 1
+worker_processes 10
 preload_app true
 timeout 90
 listen "ads2.bendbulletin.com:9011"
