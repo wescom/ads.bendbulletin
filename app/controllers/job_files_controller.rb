@@ -17,6 +17,9 @@ class JobFilesController < ApplicationController
     @notification_email_text = EmailText.find_by_name_and_email_type('Upload New File', 'notification')
     @current_user = current_user
 
+    Rails.logger.info '******* Job ID: '+@job_file.job_id.to_s
+    Rails.logger.info '******* upload_type_id: '+@job_file.job.upload_type_id.to_s unless @job_file.job.nil?
+
     if params[:cancel_button]
       redirect_to job_path(@job_file.job_id)
     else
