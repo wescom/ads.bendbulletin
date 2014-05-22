@@ -23,8 +23,8 @@ class JobFilesController < ApplicationController
     if params[:cancel_button]
       redirect_to job_path(@job_file.job_id)
     else
-      @upload_type = UploadType.find_by_id(@job_file.job.upload_type_id)
       if @job_file.save
+        @upload_type = UploadType.find_by_id(@job_file.job.upload_type_id)
         Notification.new_job_file_notification(@job_file,@upload_type,@notification_email_text).deliver if @job_file.file_type == "job_file"
         Notification.new_worked_file_notification(@job_file,@upload_type,@notification_email_text).deliver if @job_file.file_type == "worked_file"
         Notification.new_proof_file_notification(@job_file,@upload_type,@notification_email_text).deliver if @job_file.file_type == "proof_file"
