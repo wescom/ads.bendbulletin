@@ -32,6 +32,7 @@ module ApplicationHelper
   end
 
   def get_menu_tabs
+    Rails.logger.info "******* User: "+current_user.to_yaml
     @upload_types = UploadType.find(:all, :order => 'tab_sort')
   end
 
