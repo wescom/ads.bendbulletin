@@ -14,7 +14,7 @@
 	  <tbody>
 		  <% @users.each do |user| %>
 		    <tr>
-		      <td><%= link_to user.name, user %></td>
+		      <td><%= link_to user.name, user unless user.nil? %></td>
 		      <td><%= user.email %></td>
 		      <td>
 						<div class="text-center">
