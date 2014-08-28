@@ -5,7 +5,7 @@
 		<div class="inner-box clearfix">
 		  <div id="form-block" class="grid_15">
 				<%= form_for @job, :url => jobs_path, :html => {:multipart => true} do |form| %>
-					<p>Fill out the form below, browse for the file to upload, and press the submit button. If your file is large, be patient and wait for the successful upload screen. Your job and associated file will be assigned a job number and we will contact you as soon as possible in reference to your project.</p>
+					<p>Fill out the form below, browse for the file to upload, and press the submit button. If your file is large, be patient and wait for the successful upload screen. You will receive an email confirmation upon successful upload.</p>
 					<p>Required fields are marked with an asterisk *.</p>
 
 					<%= form.hidden_field :upload_type_id, :value => @upload_type.id %>
