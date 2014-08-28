@@ -9,7 +9,7 @@ class Job < ActiveRecord::Base
   has_many :job_files, :dependent => :destroy
   accepts_nested_attributes_for :job_files, :allow_destroy => true
   
-  validates_acceptance_of :disclaimer, :allow_nil => false, :accept => true, :on => :create, :message=>'Must accept Terms of Service'
+  # validates_acceptance_of :disclaimer, :allow_nil => false, :accept => true, :on => :create, :message=>'Must accept Terms of Service'
   validates_presence_of :name, :on => :create, :message=>'Name is required'
-  validates_presence_of :phonenum, :on => :create, :message=>'Phone number required'
+  # validates_presence_of :phonenum, :on => :create, :message=>'Phone number required'
 end

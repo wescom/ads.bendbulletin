@@ -13,7 +13,7 @@
 					<fieldset>
 						<div class="well well-small controls controls-row">
 							<div class="span3">
-								<label>Name:</label><%= form.text_field :name, :class => "large", :autofocus => true,
+								<label>Name: *</label><%= form.text_field :name, :class => "large", :autofocus => true,
 										:value=>current_user.name %>
 								<%= error_messages(@job, "name") %>
 							</div>
@@ -154,7 +154,7 @@
 									:placeholder=>"Enter any special instructions for this job" %>
 
 					<label class="checkbox">
-				    <%= form.check_box :disclaimer %>
+				    <!-- <%= form.check_box :disclaimer %> -->
 						<% @global_settings.each do |setting| %>
 							<p><%= setting.disclaimer.html_safe if setting.disclaimer %></p>
 						<% end %>
