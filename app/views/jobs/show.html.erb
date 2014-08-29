@@ -192,10 +192,19 @@
 														<br/><i class="icon-check"></i>
 														<%= file.approved_at.strftime('%m/%d/%y at %I:%M%p') unless file.approved_at.nil? %>
 													<% else %>
-														</br><%= link_to "Approve Proof?", job_file_approve_path(:job_file_id=>file.id, :approve => true), 
-																	:method => :post, 
-																	:confirm => "Are you sure you want to approve this proof?",
-																	:class=>"btn btn-primary btn-mini" %>
+														<% if file.rejected %>
+															<br/><i class="icon-remove"></i>
+															<%= file.rejected_at.strftime('%m/%d/%y at %I:%M%p') unless file.rejected_at.nil? %>
+														<% else %>
+															</br><%= link_to "Approve Proof?", job_file_approve_path(:job_file_id=>file.id, :approve => true), 
+																		:method => :post, 
+																		:confirm => "Are you sure you want to approve this proof?",
+																		:class=>"btn btn-primary btn-mini approve_btn" %>
+															</br><%= link_to "Reject Proof?", job_file_reject_path(:job_file_id=>file.id, :reject => true), 
+																		:method => :post, 
+																		:confirm => "Are you sure you want to reject this proof?",
+																		:class=>"btn btn-primary btn-mini reject_btn" %>
+														<% end %>
 													<% end %>
 												</li>
 											</ul>
@@ -208,6 +217,7 @@
 									<% if @job.job_files.present? %>
 										<div class="pull-right">
 											<div class="checkbox"><i class="icon-check"></i> = Approved Proof </div>
+											<div class="checkbox"><i class="icon-remove"></i> = Rejected Proof </div>
 										</div>
 									<% end %>
 								</div>

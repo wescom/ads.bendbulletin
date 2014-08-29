@@ -71,4 +71,18 @@ class Notification < ActionMailer::Base
     end
     Rails.logger.info "*** Notification Sent ***"
   end
+  
+  # Proof Rejected
+  def proof_rejected_notification(job_file,upload_type,email_text)
+    @upload_type = upload_type
+    @job_file = job_file
+    @email_text = email_text
+
+    recipient = upload_type.email_recipient
+    subject = "Proof Rejected"
+    mail(:to => recipient, :subject => subject) do |format|
+      format.html
+    end
+    Rails.logger.info "*** Notification Sent ***"
+  end
 end

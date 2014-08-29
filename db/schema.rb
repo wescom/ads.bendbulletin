@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140329150907) do
+ActiveRecord::Schema.define(:version => 20140829205009) do
 
   create_table "email_texts", :force => true do |t|
     t.string   "name"
@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(:version => 20140329150907) do
     t.string   "file_type",         :default => "job_file"
     t.boolean  "approved",          :default => false
     t.datetime "approved_at"
+    t.boolean  "rejected",          :default => false
+    t.datetime "rejected_at"
   end
 
   create_table "jobs", :force => true do |t|

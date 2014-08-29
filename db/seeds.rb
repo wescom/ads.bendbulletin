@@ -29,6 +29,10 @@ email_text = EmailText.find_or_create_by_name_and_email_type :name=>'Proof Appro
 puts 'Email: ' << email_text.name
 email_text = EmailText.find_or_create_by_name_and_email_type :name=>'Proof Approved', :email_type=>'notification'
 puts 'Email: ' << email_text.name
+email_text = EmailText.find_or_create_by_name_and_email_type :name=>'Proof Rejected', :email_type=>'confirmation'
+puts 'Email: ' << email_text.name
+email_text = EmailText.find_or_create_by_name_and_email_type :name=>'Proof Rejected', :email_type=>'notification'
+puts 'Email: ' << email_text.name
 
 puts 'DEFAULT USERS'
 user = User.find_or_create_by_email :name => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL'].dup, :password => ENV['ADMIN_PASSWORD'].dup, :password_confirmation => ENV['ADMIN_PASSWORD'].dup

@@ -4,7 +4,7 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <h1>Proof '<%= @job_file.file_file_name %>' has been approved for Job #<%= @job_file.job.id %></h1>
+    <h1>Proof '<%= @job_file.file_file_name %>' has been rejected for Job #<%= @job_file.job.id %></h1>
 		<p>
       <%= @email_text.pretext unless @email_text.pretext.nil? %>.
     </p>

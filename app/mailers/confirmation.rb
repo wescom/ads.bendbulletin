@@ -79,4 +79,17 @@ class Confirmation < ActionMailer::Base
     end
     Rails.logger.info "*** Confirmation Sent ***"
   end
+
+  # Proof Rejected
+  def confirmation_proof_rejected(job_file,upload_type,recipient,email_text)
+    @upload_type = upload_type
+    @job_file = job_file
+    @email_text = email_text
+
+    subject = "Ads.BendBulletin.com Confirmation - Proof Rejected"
+    mail(:to => recipient, :subject => subject) do |format|
+      format.html
+    end
+    Rails.logger.info "*** Confirmation Sent ***"
+  end
 end
