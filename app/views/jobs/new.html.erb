@@ -141,7 +141,8 @@
 							<% end %><br/>
 						</div>
 
-						Files to Upload:
+						Files to Upload: *
+						<%= error_messages(@job, "job_files") %>
 						<div class="well well-small clearfix">
 							<p>Browse your system and locate the file(s) to upload for this job.</p>
 
@@ -156,7 +157,7 @@
 					<label class="checkbox">
 				    <!-- <%= form.check_box :disclaimer %> -->
 						<% @global_settings.each do |setting| %>
-							<p><%= setting.disclaimer.html_safe if setting.disclaimer %></p>
+							<p>* <%= setting.disclaimer.html_safe if setting.disclaimer %></p>
 						<% end %>
 						<%= error_messages(@job, "disclaimer") %>
 				  </label>

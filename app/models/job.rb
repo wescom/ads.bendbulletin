@@ -12,4 +12,5 @@ class Job < ActiveRecord::Base
   # validates_acceptance_of :disclaimer, :allow_nil => false, :accept => true, :on => :create, :message=>'Must accept Terms of Service'
   validates_presence_of :name, :on => :create, :message=>'Name is required'
   # validates_presence_of :phonenum, :on => :create, :message=>'Phone number required'
+  validates_presence_of :job_files, :on => :create, :message=>'Files to Upload are required'
 end
