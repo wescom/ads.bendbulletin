@@ -159,6 +159,8 @@
 						<% @global_settings.each do |setting| %>
 							<p>* <%= setting.disclaimer.html_safe if setting.disclaimer %></p>
 						<% end %>
+						<p><%= link_to "Review Upload Instructions", upload_type_detailed_instructions_path(@upload_type), 
+														class: 'btn btn-mini btn-info', :target => "_blank" %></p>
 						<%= error_messages(@job, "disclaimer") %>
 				  </label>
 

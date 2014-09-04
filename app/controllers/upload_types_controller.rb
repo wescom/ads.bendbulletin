@@ -10,6 +10,11 @@ class UploadTypesController < ApplicationController
     @upload_type = UploadType.find(params[:id])
   end
 
+  def detailed_instructions
+    @upload_type = UploadType.find(params[:upload_type_id])
+    render :layout => "detailed_instructions"
+  end
+
   def new
     @upload_type = UploadType.new
   end

@@ -7,11 +7,15 @@ AdUpload::Application.routes.draw do
   resources :users
   
   resources :global_settings
-  resources :upload_types
   resources :email_texts
+  
+  resources :upload_types do
+    get :detailed_instructions
+  end
   
   resources :jobs
   get 'myjobs', :to => "jobs#myjobs"
+
   resources :job_files do
     post :approve
     post :reject

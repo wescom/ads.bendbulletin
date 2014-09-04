@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140829205009) do
+ActiveRecord::Schema.define(:version => 20140904201236) do
 
   create_table "email_texts", :force => true do |t|
     t.string   "name"
@@ -101,24 +101,25 @@ ActiveRecord::Schema.define(:version => 20140829205009) do
   add_index "roles", ["name"], :name => "index_roles_on_name"
 
   create_table "upload_types", :force => true do |t|
-    t.string   "name",                                    :null => false
-    t.string   "tab_name",                                :null => false
-    t.integer  "tab_sort",             :default => 0,     :null => false
+    t.string   "name",                                     :null => false
+    t.string   "tab_name",                                 :null => false
+    t.integer  "tab_sort",              :default => 0,     :null => false
     t.text     "description"
     t.text     "instructions"
     t.string   "email_recipient"
-    t.boolean  "get_startdate",        :default => false
-    t.boolean  "get_application_used", :default => false
-    t.boolean  "get_platform",         :default => false
-    t.boolean  "get_image_format",     :default => false
-    t.boolean  "get_vector_format",    :default => false
-    t.boolean  "get_color_spec",       :default => false
-    t.boolean  "get_job_type",         :default => false
-    t.boolean  "get_trapping",         :default => false
-    t.boolean  "get_files_to_run",     :default => false
-    t.datetime "created_at",                              :null => false
-    t.datetime "updated_at",                              :null => false
+    t.boolean  "get_startdate",         :default => false
+    t.boolean  "get_application_used",  :default => false
+    t.boolean  "get_platform",          :default => false
+    t.boolean  "get_image_format",      :default => false
+    t.boolean  "get_vector_format",     :default => false
+    t.boolean  "get_color_spec",        :default => false
+    t.boolean  "get_job_type",          :default => false
+    t.boolean  "get_trapping",          :default => false
+    t.boolean  "get_files_to_run",      :default => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
     t.string   "email_replyto"
+    t.text     "detailed_instructions"
   end
 
   create_table "users", :force => true do |t|

@@ -1,0 +1,10 @@
+<div id="upload_types-page">
+	<div id="page-content" class="clearfix">
+		<div class="inner-box clearfix">
+		  <div id="form-block" class="grid_15">
+				<p class="lead"><%= @upload_type.description %></p>
+				<p><%= @upload_type.detailed_instructions.html_safe if @upload_type.detailed_instructions %></p>
+			</div>
+		</div>
+	</div>
+</div>

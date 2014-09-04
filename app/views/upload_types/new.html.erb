@@ -20,18 +20,23 @@
 						<label>Upload Instructions:</label>
 						<%= form.text_area :instructions, :style=>"width:80%;height:400px", :placeholder=>"Enter instructions for user" %>
 
-						<ul class="unstyled">
-						Upload Prompts to include:
-							<li><label class="checkbox"><%= form.check_box :get_startdate %>StartDate</label></li>
-							<li><label class="checkbox"><%= form.check_box :get_application_used %>Application Used (ie. InDesign, PhotoShop,...)</label></li>
-							<li><label class="checkbox"><%= form.check_box :get_platform %>Platform (ie. Mac/Windows)</label></li>
-							<li><label class="checkbox"><%= form.check_box :get_image_format %>Image Format (ie. TIFF, JPG,...)</label></li>
-							<li><label class="checkbox"><%= form.check_box :get_vector_format %>Vector Format (ie. EPS, AI,...)</label></li>
-							<li><label class="checkbox"><%= form.check_box :get_color_spec %>Color Spec (BW or Color)</label></li>
-							<li><label class="checkbox"><%= form.check_box :get_job_type %>Job Types (ie. Coupon, Reverse,...)</label></li>
-							<li><label class="checkbox"><%= form.check_box :get_trapping %>Trapping Applied?</label></li>
-							<li><label class="checkbox"><%= form.check_box :get_files_to_run %>List of Files to Run</label></li>
-						</ul>
+						<label>Detailed Instructions about creating press-ready files:</label>
+						<%= form.text_area :detailed_instructions, :style=>"width:80%;height:400px", :placeholder=>"Enter detailed instructions for user" %>
+
+						<div class="well well-small">
+							<ul class="unstyled">
+							Upload Prompts to include:
+								<li><label class="checkbox"><%= form.check_box :get_startdate %>StartDate</label></li>
+								<li><label class="checkbox"><%= form.check_box :get_application_used %>Application Used (ie. InDesign, PhotoShop,...)</label></li>
+								<li><label class="checkbox"><%= form.check_box :get_platform %>Platform (ie. Mac/Windows)</label></li>
+								<li><label class="checkbox"><%= form.check_box :get_image_format %>Image Format (ie. TIFF, JPG,...)</label></li>
+								<li><label class="checkbox"><%= form.check_box :get_vector_format %>Vector Format (ie. EPS, AI,...)</label></li>
+								<li><label class="checkbox"><%= form.check_box :get_color_spec %>Color Spec (BW or Color)</label></li>
+								<li><label class="checkbox"><%= form.check_box :get_job_type %>Job Types (ie. Coupon, Reverse,...)</label></li>
+								<li><label class="checkbox"><%= form.check_box :get_trapping %>Trapping Applied?</label></li>
+								<li><label class="checkbox"><%= form.check_box :get_files_to_run %>List of Files to Run</label></li>
+							</ul>
+						</div>
 
 						<label>Email Recipient (whom to email when job is created):</label>
 						<%= form.text_field :email_recipient, :class => "large", :placeholder=>"email" %>

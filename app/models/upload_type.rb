@@ -1,5 +1,5 @@
 class UploadType < ActiveRecord::Base
-  attr_accessible :name, :tab_name, :tab_sort, :description, :instructions, :email_recipient, :email_replyto,
+  attr_accessible :name, :tab_name, :tab_sort, :description, :instructions, :detailed_instructions, :email_recipient, :email_replyto,
                   :get_startdate, :get_application_used, :get_platform, :get_image_format, :get_vector_format, 
                   :get_color_spec, :get_job_type, :get_trapping, :get_files_to_run
 
