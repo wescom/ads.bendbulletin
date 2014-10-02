@@ -20,7 +20,7 @@ class JobFilesController < ApplicationController
     if params[:cancel_button]
       redirect_to job_path(@job_file.job_id)
     else
-      if (!                             @job_file.nil? && @job_file.save)
+      if (!@job_file.nil? && @job_file.save)
         Rails.logger.info '******* Job ID: '+@job_file.job_id.to_s unless @job_file.job_id.nil?
         Rails.logger.info '******* upload_type_id: '+@job_file.job.upload_type_id.to_s unless @job_file.job.nil?
 

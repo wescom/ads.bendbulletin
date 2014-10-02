@@ -8,7 +8,7 @@ class Notification < ActionMailer::Base
     @email_text = email_text
 
     recipient = upload_type.email_recipient
-    subject = "Files have been uploaded to ads.bendbulletin.com"
+    subject = "Files have been uploaded to ads.bendbulletin.com - Job #"+@job.id.to_s
     mail(:to => recipient, :subject => subject) do |format|
       format.html
 #      format.text
@@ -23,7 +23,7 @@ class Notification < ActionMailer::Base
     @email_text = email_text
 
     recipient = upload_type.email_recipient
-    subject = "New Job File Uploaded"
+    subject = "New Job File Uploaded for Job #"+@job_file.job.id.to_s
     mail(:to => recipient, :subject => subject) do |format|
       format.html
     end
@@ -37,7 +37,7 @@ class Notification < ActionMailer::Base
     @email_text = email_text
 
     recipient = job_file.job.email
-    subject = "New Worked File Uploaded"
+    subject = "New Worked File Uploaded for Job #"+@job_file.job.id.to_s
     mail(:to => recipient, :subject => subject) do |format|
       format.html
     end
@@ -51,7 +51,7 @@ class Notification < ActionMailer::Base
     @email_text = email_text
 
     recipient = job_file.job.email
-    subject = "New Proof Uploaded"
+    subject = "New Proof Uploaded for Job #"+@job_file.job.id.to_s
     mail(:to => recipient, :subject => subject) do |format|
       format.html
     end
@@ -65,7 +65,7 @@ class Notification < ActionMailer::Base
     @email_text = email_text
 
     recipient = upload_type.email_recipient
-    subject = "Proof Approved"
+    subject = "Proof Approved for Job #"+@job_file.job.id.to_s
     mail(:to => recipient, :subject => subject) do |format|
       format.html
     end
@@ -79,7 +79,7 @@ class Notification < ActionMailer::Base
     @email_text = email_text
 
     recipient = upload_type.email_recipient
-    subject = "Proof Rejected"
+    subject = "Proof Rejected for Job #"+@job_file.job.id.to_s
     mail(:to => recipient, :subject => subject) do |format|
       format.html
     end

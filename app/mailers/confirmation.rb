@@ -20,7 +20,7 @@ class Confirmation < ActionMailer::Base
     @job = job
     @email_text = email_text
 
-    subject = "Ads.BendBulletin.com Confirmation"
+    subject = "Ads.BendBulletin.com Confirmation - Job #"+@job.id.to_s
     mail(:to => recipient, :subject => subject) do |format|
       format.html
 #      format.text
@@ -34,7 +34,7 @@ class Confirmation < ActionMailer::Base
     @job_file = job_file
     @email_text = email_text
 
-    subject = "Ads.BendBulletin.com Confirmation - New File Uploaded"
+    subject = "Ads.BendBulletin.com Confirmation - New File Uploaded for Job #"+@job_file.job.id.to_s
     mail(:to => recipient, :subject => subject) do |format|
       format.html
     end
@@ -47,7 +47,7 @@ class Confirmation < ActionMailer::Base
     @job_file = job_file
     @email_text = email_text
 
-    subject = "Ads.BendBulletin.com Confirmation - New File Uploaded"
+    subject = "Ads.BendBulletin.com Confirmation - New File Uploaded for Job #"+@job_file.job.id.to_s
     mail(:to => recipient, :subject => subject) do |format|
       format.html
     end
@@ -60,7 +60,7 @@ class Confirmation < ActionMailer::Base
     @job_file = job_file
     @email_text = email_text
 
-    subject = "Ads.BendBulletin.com Confirmation - Proof Uploaded"
+    subject = "Ads.BendBulletin.com Confirmation - Proof Uploaded - Job #"+@job_file.job.id.to_s
     mail(:to => recipient, :subject => subject) do |format|
       format.html
     end
@@ -73,7 +73,7 @@ class Confirmation < ActionMailer::Base
     @job_file = job_file
     @email_text = email_text
 
-    subject = "Ads.BendBulletin.com Confirmation - Proof Approved"
+    subject = "Ads.BendBulletin.com Confirmation - Proof Approved for Job #"+@job_file.job.id.to_s
     mail(:to => recipient, :subject => subject) do |format|
       format.html
     end
@@ -86,7 +86,7 @@ class Confirmation < ActionMailer::Base
     @job_file = job_file
     @email_text = email_text
 
-    subject = "Ads.BendBulletin.com Confirmation - Proof Rejected"
+    subject = "Ads.BendBulletin.com Confirmation - Proof Rejected for Job #"+@job_file.job.id.to_s
     mail(:to => recipient, :subject => subject) do |format|
       format.html
     end
