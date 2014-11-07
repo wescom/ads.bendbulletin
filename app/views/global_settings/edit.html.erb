@@ -10,6 +10,13 @@
 							<div class="setting_header"></div>
 							<div class="setting_body form-horizontal">
 							  <div class="control-group">
+							    <label class="control-label" for="register_text">Login/Register Message:</label>
+							    <div class="controls">
+										<%= form.text_area :register_text, :style=>"width:80%;height:100px",
+													:placeholder=>"Enter Login/Register message here..." %>
+							    </div>
+							  </div>
+							  <div class="control-group">
 							    <label class="control-label" for="welcome">Welcome Message:</label>
 							    <div class="controls">
 										<%= form.text_area :welcome, :style=>"width:80%;height:100px",

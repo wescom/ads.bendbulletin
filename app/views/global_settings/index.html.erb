@@ -41,6 +41,12 @@
 						<div id="settings_inner_block">
 							<div class="setting_body">
 								<dl>
+									<dt>Login/Register Text: </dt>
+									<div class="well well-small controls controls-row">
+										<dd><%= form.register_text.html_safe if form.register_text %></dd>
+									</div>
+								</dl>
+								<dl>
 									<dt>Welcome Text: </dt>
 									<div class="well well-small controls controls-row">
 										<dd><%= form.welcome.html_safe if form.welcome %></dd>
