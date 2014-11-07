@@ -1,39 +1,61 @@
 <div id="login-page" class="span12">
-	<div class="span6">
-		<div class="login-form">
-			<h3>Account Login </h3>
-			<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical' }) do |f| %>
-				<form role="form">
-				  <div class="form-group">
-				    <%= f.text_field :email, :autofocus => true, :placeholder => "email address" %>
-				  </div>
-				  <div class="form-group">
-				    <%= f.password_field :password, :placeholder => "password" %>
-				  </div>
-					</br>
-					<div class=span11>
-				  	<span class="pull-left">
-							<% if devise_mapping.rememberable? %>
-								<%= f.check_box :remember_me, :as => :boolean %> Remember Me
-							<% end %>
-						</span>
-				  	<span class="pull-right"><%= f.submit "Login", :class => 'btn btn-primary' %></span>
-					</div>
-			  	<span class="pull-right"><br/><%= link_to "Forgot your password?", new_password_path(resource_name) %></span>
-				</form>
-			<% end %>
+	<div class="span 12">
+		<div class="well well-small">
+			<h1 class="text-center">
+				WELCOME<br/>
+			<h1>
+			<h2 class="text-center">
+				to the new file upload site for The Bulletin and Northwest Web Press!
+			</h2>
+			<h4 class="text-center">
+				If this is your first visit to our NEW UPLOAD SITE you must create a new account by selecting the REGISTER button below.
+			</h4>
+		</div>
+		<div class="well well-small">
+			<h5 class="text-center">
+				Please Note: <br/>
+				Login credentials for users of the old ads.bendbulletin.com site will not work on this site.  Please use the REGISTER button below to create a new account or contact your sales representative if you need further assistance.
+			</h5>
 		</div>
 	</div>
-	<div class="span6">
-		<div class="login-form">
-			<h3>Register for an account</h3>
-			<div class="indent">All file transfers require that you register for a free file upload account. A valid email address and contact information are required to send us files using this tool. Simply click the Register button to create your account and you will be ready to go.</div>
-			<br/>
-			<div class=span11>
-				<span class="pull-right">
-					<%= link_to "Register", new_registration_path(resource_name), :class => 'btn btn-primary' %>
-				</span>
+
+	<div>
+		<div class="span6">
+			<div class="login-form">
+				<h3>Account Login </h3>
+				<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical' }) do |f| %>
+					<form role="form">
+					  <div class="form-group">
+					    <%= f.text_field :email, :autofocus => true, :placeholder => "email address" %>
+					  </div>
+					  <div class="form-group">
+					    <%= f.password_field :password, :placeholder => "password" %>
+					  </div>
+						</br>
+						<div class=span11>
+					  	<span class="pull-left">
+								<% if devise_mapping.rememberable? %>
+									<%= f.check_box :remember_me, :as => :boolean %> Remember Me
+								<% end %>
+							</span>
+					  	<span class="pull-right"><%= f.submit "Login", :class => 'btn btn-primary' %></span>
+						</div>
+				  	<span class="pull-right"><br/><%= link_to "Forgot your password?", new_password_path(resource_name) %></span>
+					</form>
+				<% end %>
 			</div>
-		</DIV>
+		</div>
+		<div class="span6">
+			<div class="login-form">
+				<h3>Register for an account</h3>
+				<div class="indent">All file transfers require that you register for a free file upload account. A valid email address and contact information are required to send us files using this tool. Simply click the Register button to create your account and you will be ready to go.</div>
+				<br/>
+				<div class=span11>
+					<span class="pull-right">
+						<%= link_to "Register", new_registration_path(resource_name), :class => 'btn btn-primary' %>
+					</span>
+				</div>
+			</DIV>
+		</div>
 	</div>
 </div>
