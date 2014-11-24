@@ -14,9 +14,9 @@ set :bundle_flags, ''
 #set :user,      "deployer"  # The server's user for deploys
 #set :group,     "ads"
 
-role :web, "ads.bendbulletin.com"                       # Your HTTP server, Apache/etc
-role :app, "ads.bendbulletin.com"                       # This may be the same as your `Web` server
-role :db,  "ads.bendbulletin.com", :primary => true     # This is where Rails migrations will run
+role :web, "ads2.bendbulletin.com"                       # Your HTTP server, Apache/etc
+role :app, "ads2.bendbulletin.com"                       # This may be the same as your `Web` server
+role :db,  "ads2.bendbulletin.com", :primary => true     # This is where Rails migrations will run
 
 # if you want to clean up old releases on each deploy uncomment this:
 #after 'deploy:restart', 'deploy:cleanup'
