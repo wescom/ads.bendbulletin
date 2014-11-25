@@ -9,7 +9,8 @@ app_path = "/u/apps/ads.bendbulletin.com/current"
 worker_processes 10
 preload_app true
 timeout 1200
-listen "ads.bendbulletin.com:9011"
+#listen "ads.bendbulletin.com:9011"
+listen "ads.bendbulletin.com"
 
 # Spawn unicorn master worker for user deployer (group: ads)
 #user 'deployer', 'ads' 
