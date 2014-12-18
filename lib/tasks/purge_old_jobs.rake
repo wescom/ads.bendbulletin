@@ -11,7 +11,8 @@ namespace :ad_upload do
       puts @jobs.count.to_s+" Jobs to Purge older than " + purge_date.to_s
 
       @jobs.each do |job|
-        puts "Job:"+job.id.to_s + " - " + job.name+" - "+ job.updated_at.to_s
+        puts "Purged job #"+job.id.to_s + " - " + job.name+" - "+ job.updated_at.to_s
+        #job.destroy
       end
     end
 
