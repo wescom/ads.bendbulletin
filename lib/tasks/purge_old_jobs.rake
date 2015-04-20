@@ -3,7 +3,7 @@ namespace :ad_upload do
   task :delete_old_jobs  => :environment do
 
     def delete_jobs
-      purge_date = Date.today - 30
+      purge_date = Date.today - 7
 #      puts purge_date.to_s
 
       @jobs = Job
