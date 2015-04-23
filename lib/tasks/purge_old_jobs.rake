@@ -12,7 +12,7 @@ namespace :ad_upload do
 
       @jobs.each do |job|
         puts "Purged job #"+job.id.to_s + " - " + job.name+" - "+ job.updated_at.to_s
-        #job.destroy
+        job.destroy
       end
     end
 
