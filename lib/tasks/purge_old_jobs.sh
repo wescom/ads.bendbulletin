@@ -2,6 +2,6 @@
 
 echo "$(date +%m/%d/%y\ %T)"
 cd /u/apps/ads.bendbulletin.com/current
-bundle install
+bundle install>>/tmp/null
 
 bundle exec rake ad_upload:delete_old_jobs RAILS_ENV=production
