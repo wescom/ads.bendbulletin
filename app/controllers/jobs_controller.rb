@@ -52,10 +52,10 @@ class JobsController < ApplicationController
       @job.user_id = current_user.id
       @upload_type = UploadType.find_by_id(@job.upload_type_id)
       if @job.save
-        Notification.job_uploaded_notification(@upload_type,@job,@notification_email_text).deliver
-        Confirmation.confirmation_new_job(@upload_type,@job,@current_user.email,@confirmation_email_text).deliver
+#        Notification.job_uploaded_notification(@upload_type,@job,@notification_email_text).deliver
+#        Confirmation.confirmation_new_job(@upload_type,@job,@current_user.email,@confirmation_email_text).deliver
         if @job.email != @current_user.email
-          Confirmation.confirmation_new_job(@upload_type,@job,@job.email,@confirmation_email_text).deliver
+#          Confirmation.confirmation_new_job(@upload_type,@job,@job.email,@confirmation_email_text).deliver
         end
         flash[:notice] = "Job Created"
         redirect_to root_path
