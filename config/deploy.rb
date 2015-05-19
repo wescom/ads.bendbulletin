@@ -26,3 +26,6 @@ require 'capistrano-unicorn'
 after 'deploy:restart', 'unicorn:reload'    # app IS NOT preloaded
 after 'deploy:restart', 'unicorn:restart'   # app preloaded
 
+after 'deploy:restart' do
+  run "chmod 777 #{shared_path}/pids/unicorn.pid"
+end
