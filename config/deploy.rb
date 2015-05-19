@@ -27,5 +27,6 @@ after 'deploy:restart', 'unicorn:reload'    # app IS NOT preloaded
 after 'deploy:restart', 'unicorn:restart'   # app preloaded
 
 after 'deploy:restart' do
-  run "chmod 777 #{shared_path}/pids/unicorn.pid"
+  run "echo 'Setting permissions on unicorn.pid' && sleep 2 && chmod 777 #{shared_path}/pids/unicorn.pid"
+  run "echo 'Change group on unicorn.pid' && chown :ads #{shared_path}/pids/unicorn.pid"
 end
