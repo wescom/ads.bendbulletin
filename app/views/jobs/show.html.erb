@@ -38,7 +38,7 @@
 						<h5>Job Info:</h5>
 						<div class="well well-small">
 							<% if @job.upload_type.get_startdate %>
-								StartDate: <%= @job.startdate.strftime('%m/%d/%y') unless @job.startdate.empty? %><br/>
+								StartDate: <%= @job.startdate.strftime('%m/%d/%y') %><br/>
 							<% end %>
 
 							<% if @job.upload_type.get_application_used %>
